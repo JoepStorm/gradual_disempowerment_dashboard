@@ -4,386 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tracking AI Influence</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 10px;
-            background-color: #f5f5f5;
-        }
-
-        .container {
-            max-width: 1600px;
-            margin: 0 auto;
-            background-color: white;
-            padding: 15px 20px 20px 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-
-        h1 {
-            color: #333;
-            text-align: center;
-            margin: 0 0 10px 0;
-        }
-
-        .subtitle {
-            text-align: center;
-            color: #666;
-            margin-bottom: 30px;
-        }
-
-        .explainer {
-            margin-bottom: 40px;
-            padding: 20px;
-            background-color: #f9f9f9;
-            border-radius: 8px;
-            border-left: 4px solid #4CAF50;
-        }
-
-        .explainer p {
-            margin: 0 0 15px 0;
-            line-height: 1.6;
-            color: #333;
-        }
-
-        .explainer p:last-child {
-            margin-bottom: 0;
-        }
-
-        .explainer a {
-            color: #2563eb;
-            text-decoration: none;
-        }
-
-        .explainer a:hover {
-            text-decoration: underline;
-        }
-
-        /* Tab styles */
-        .tabs {
-            display: flex;
-            border-bottom: 2px solid #e0e0e0;
-            margin-bottom: 30px;
-            gap: 5px;
-        }
-
-        .tab-button {
-            background-color: transparent;
-            border: none;
-            padding: 15px 30px;
-            cursor: pointer;
-            font-size: 16px;
-            font-weight: 500;
-            color: #666;
-            border-bottom: 3px solid transparent;
-            transition: all 0.3s ease;
-        }
-
-        .tab-button:hover {
-            color: #333;
-            background-color: #f5f5f5;
-        }
-
-        .tab-button.active {
-            color: #4CAF50;
-            border-bottom: 3px solid #4CAF50;
-        }
-
-        .tab-content {
-            display: none;
-        }
-
-        .tab-content.active {
-            display: block;
-        }
-
-        /* Section styles */
-        .section {
-            margin-bottom: 50px;
-        }
-
-        .section-title {
-            color: #333;
-            font-size: 24px;
-            margin-bottom: 25px;
-            padding-bottom: 10px;
-            border-bottom: 3px solid #4CAF50;
-        }
-
-        .subsection {
-            margin-bottom: 40px;
-        }
-
-        .subsection-title {
-            color: #444;
-            font-size: 20px;
-            margin-bottom: 20px;
-            padding-left: 10px;
-            border-left: 4px solid #4CAF50;
-        }
-
-        /* Chart styles */
-        .chart-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            gap: 20px;
-            margin-bottom: 20px;
-        }
-
-        .chart-container {
-            background-color: #fff;
-            border: 1px solid #e0e0e0;
-            border-radius: 4px;
-            padding: 15px;
-        }
-
-        .chart-header {
-            margin-bottom: 2px;
-        }
-
-        .chart-title {
-            color: #555;
-            font-size: 16px;
-            margin-bottom: 6px;
-            font-weight: 500;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .info-icon {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 18px;
-            height: 18px;
-            background-color: #2196F3;
-            color: white;
-            border-radius: 50%;
-            font-size: 12px;
-            font-weight: bold;
-            cursor: help;
-            position: relative;
-            flex-shrink: 0;
-        }
-
-        .info-popup {
-            display: none;
-            position: absolute;
-            left: 25px;
-            top: -10px;
-            background-color: #333;
-            color: white;
-            padding: 12px 15px;
-            border-radius: 6px;
-            font-size: 13px;
-            line-height: 1.5;
-            width: 300px;
-            z-index: 1000;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-            font-weight: normal;
-        }
-
-        .info-icon:hover .info-popup {
-            display: block;
-        }
-
-        .info-popup strong {
-            display: block;
-            margin-bottom: 5px;
-            color: #4CAF50;
-        }
-
-        .info-popup p {
-            margin: 5px 0;
-        }
-
-        .chart-explainer {
-            color: #666;
-            font-size: 13px;
-            line-height: 1.5;
-            margin-bottom: 4px;
-            font-style: italic;
-        }
-
-        .tab-explainer {
-            background-color: #f0f7ff;
-            border-left: 4px solid #2196F3;
-            padding: 15px 20px;
-            margin-bottom: 30px;
-            border-radius: 4px;
-        }
-
-        .tab-explainer p {
-            margin: 0;
-            color: #444;
-            font-size: 14px;
-            line-height: 1.6;
-        }
-
-        .section-explainer {
-            background-color: #f9fafb;
-            border-left: 3px solid #4CAF50;
-            padding: 12px 15px;
-            margin-bottom: 20px;
-            margin-top: -10px;
-            border-radius: 3px;
-        }
-
-        .section-explainer p {
-            margin: 0;
-            color: #555;
-            font-size: 13px;
-            line-height: 1.5;
-        }
-
-        .chart-placeholder {
-            background-color: #f9f9f9;
-            border: 2px dashed #ccc;
-            border-radius: 4px;
-            height: 400px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #999;
-            font-style: italic;
-        }
-
-        iframe {
-            width: 100%;
-            border: none;
-            border-radius: 4px;
-        }
-
-        .chart-iframe {
-            height: 600px;
-        }
-
-        .full-width-chart {
-            margin-bottom: 30px;
-        }
-
-        .overview-hero {
-            display: flex;
-            gap: 30px;
-            margin-bottom: 40px;
-        }
-
-        .overview-hero .explainer {
-            flex: 0 0 35%;
-            margin-bottom: 0;
-        }
-
-        .overview-hero .hero-chart {
-            flex: 1;
-        }
-
-        .overview-hero .hero-chart .chart-iframe {
-            margin: 0 -10px;
-            width: calc(100% + 20px);
-        }
-
-        /* News styles */
-        .news-container {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-            margin-top: 20px;
-        }
-
-        .news-card {
-            display: flex;
-            background-color: #fff;
-            border: 1px solid #e0e0e0;
-            border-radius: 8px;
-            overflow: hidden;
-            transition: box-shadow 0.3s ease;
-        }
-
-        .news-card:hover {
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        }
-
-        .news-image {
-            width: 300px;
-            min-width: 300px;
-            height: 200px;
-            object-fit: cover;
-            background-color: #f5f5f5;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #999;
-            font-size: 14px;
-        }
-
-        .news-content {
-            padding: 20px;
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .news-header {
-            color: #333;
-            font-size: 18px;
-            font-weight: 600;
-            margin-bottom: 8px;
-            line-height: 1.3;
-        }
-
-        .news-date {
-            color: #999;
-            font-size: 12px;
-            margin-bottom: 10px;
-        }
-
-        .news-summary {
-            color: #555;
-            font-size: 14px;
-            line-height: 1.6;
-            margin-bottom: 15px;
-            flex: 1;
-        }
-
-        .news-link {
-            display: inline-block;
-            color: #2196F3;
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: 500;
-            transition: color 0.2s ease;
-            align-self: flex-start;
-        }
-
-        .news-link:hover {
-            color: #1976D2;
-            text-decoration: underline;
-        }
-
-        @media (max-width: 768px) {
-            .news-card {
-                flex-direction: column;
-            }
-
-            .news-image {
-                width: 100%;
-                min-width: 100%;
-            }
-        }
-
-        @media (max-width: 1024px) {
-            .overview-hero {
-                flex-direction: column;
-            }
-
-            .overview-hero .explainer {
-                flex: 1;
-                margin-bottom: 30px;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="site.css">
 </head>
 <body>
     <div class="container">
@@ -404,10 +25,10 @@
             <div class="overview-hero">
                 <div class="explainer">
                     <p>
-                        As AI systems increasingly take over human roles in labor, creativity, governance, companionship and decision-making, they may gradually erode the mechanisms that keep our societies aligned with human interests. This slow shift—known as <a href="https://gradual-disempowerment.ai/" target="_blank" rel="noopener noreferrer"><em>Gradual Disempowerment</em></a>—describes a world where AI becomes indispensable to the economy, culture, and state, while human participation and influence decline. Left unchecked, this could lead to societies that function efficiently, but no longer for human ends.
+                        As AI systems increasingly take over human roles in labor, creativity, governance, companionship and decision-making, they may gradually erode the mechanisms that keep our societies aligned with human interests. This slow shift—known as <a href="https://gradual-disempowerment.ai/" target="_blank" rel="noopener noreferrer" style="color: #0366d6; text-decoration: none;"><em>Gradual Disempowerment</em></a>—describes a world where AI becomes indispensable to the economy, culture, and state, while human participation and influence decline. Left unchecked, this could lead to societies that function efficiently, but no longer for human ends.
                     </p>
                     <p>
-                        This website gathers important metrics that highlight that indicate the influence of AIs over important societal functions. You can also see recent news related to Gradual Disempowerment.
+                        This website gathers important metrics that indicate the influence of AIs over important societal functions. You can also see recent news related to Gradual Disempowerment.
                     </p>
                     <p>
                         <strong>Read more about Gradual Disempowerment:</strong><br>
@@ -419,801 +40,36 @@
 
                 <div class="hero-chart">
                     <div class="chart-container">
-                        <div class="chart-header">
-                            <h3 class="chart-title">
-                                AI Empowerment over Time (2010-2035)
-                                <span class="info-icon">i
-                                    <div class="info-popup">
-                                        <strong>Data Source:</strong>
-                                        <p>[Add data source information]</p>
-                                        <strong>Limitations:</strong>
-                                        <p>[Add limitations and caveats]</p>
-                                    </div>
-                                </span>
-                            </h3>
-                            <div class="chart-explainer">This chart aggregates all our disempowerment-related metrics into a single index that shows the overall disempowerment of humans.</div>
-                        </div>
-                        <iframe class="chart-iframe" src="generated_html/gradual_disempowerment.html"></iframe>
+                        <!-- Hero chart will be dynamically rendered -->
                     </div>
                 </div>
             </div>
 
-            <div class="section">
-                <h2 class="section-title">Total Disempowerment (aggregated)</h2>
-                <div class="section-explainer">
-                    <p>[Add section explainer about total disempowerment metrics]</p>
-                </div>
-
-                <div class="full-width-chart">
-                    <div class="chart-container">
-                        <div class="chart-header">
-                            <h3 class="chart-title">
-                                World Map View over time (fake data)
-                                <span class="info-icon">i
-                                    <div class="info-popup">
-                                        <strong>Data Source:</strong>
-                                        <p>[Add data source information]</p>
-                                        <strong>Limitations:</strong>
-                                        <p>[Add limitations and caveats]</p>
-                                    </div>
-                                </span>
-                            </h3>
-                            <div class="chart-explainer">[Add explainer about how this metric relates to Gradual Disempowerment]</div>
-                        </div>
-                        <iframe class="chart-iframe" src="generated_html/world_disempowerment.html"></iframe>
-                    </div>
-                </div>
-
-                <div class="full-width-chart">
-                    <div class="chart-container">
-                        <div class="chart-header">
-                            <h3 class="chart-title">
-                                Country Trends (fake data)
-                                <span class="info-icon">i
-                                    <div class="info-popup">
-                                        <strong>Data Source:</strong>
-                                        <p>[Add data source information]</p>
-                                        <strong>Limitations:</strong>
-                                        <p>[Add limitations and caveats]</p>
-                                    </div>
-                                </span>
-                            </h3>
-                            <div class="chart-explainer">[Add explainer about how this metric relates to Gradual Disempowerment]</div>
-                        </div>
-                        <iframe class="chart-iframe" src="generated_html/country_lines.html"></iframe>
-                    </div>
-                </div>
-            </div>
-
-            <div class="section">
-                <h2 class="section-title">Economic Disempowerment (aggregated)</h2>
-                <div class="section-explainer">
-                    <p>[Add section explainer about economic disempowerment metrics]</p>
-                </div>
-                <div class="chart-grid">
-                    <div class="chart-container">
-                        <div class="chart-header">
-                            <h3 class="chart-title">
-                                Economic Disempowerment Index
-                                <span class="info-icon">i
-                                    <div class="info-popup">
-                                        <strong>Data Source:</strong>
-                                        <p>[Add data source information]</p>
-                                        <strong>Limitations:</strong>
-                                        <p>[Add limitations and caveats]</p>
-                                    </div>
-                                </span>
-                            </h3>
-                            <div class="chart-explainer">[Add explainer about how this metric relates to Gradual Disempowerment]</div>
-                        </div>
-                        <div class="chart-placeholder">Graph coming soon</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="section">
-                <h2 class="section-title">Governmental Disempowerment (aggregated)</h2>
-                <div class="section-explainer">
-                    <p>[Add section explainer about governmental disempowerment metrics]</p>
-                </div>
-                <div class="chart-grid">
-                    <div class="chart-container">
-                        <div class="chart-header">
-                            <h3 class="chart-title">
-                                Governmental Disempowerment Index
-                                <span class="info-icon">i
-                                    <div class="info-popup">
-                                        <strong>Data Source:</strong>
-                                        <p>[Add data source information]</p>
-                                        <strong>Limitations:</strong>
-                                        <p>[Add limitations and caveats]</p>
-                                    </div>
-                                </span>
-                            </h3>
-                            <div class="chart-explainer">[Add explainer about how this metric relates to Gradual Disempowerment]</div>
-                        </div>
-                        <div class="chart-placeholder">Graph coming soon</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="section">
-                <h2 class="section-title">Cultural Disempowerment (aggregated)</h2>
-                <div class="section-explainer">
-                    <p>[Add section explainer about cultural disempowerment metrics]</p>
-                </div>
-                <div class="chart-grid">
-                    <div class="chart-container">
-                        <div class="chart-header">
-                            <h3 class="chart-title">
-                                Cultural Disempowerment Index
-                                <span class="info-icon">i
-                                    <div class="info-popup">
-                                        <strong>Data Source:</strong>
-                                        <p>[Add data source information]</p>
-                                        <strong>Limitations:</strong>
-                                        <p>[Add limitations and caveats]</p>
-                                    </div>
-                                </span>
-                            </h3>
-                            <div class="chart-explainer">[Add explainer about how this metric relates to Gradual Disempowerment]</div>
-                        </div>
-                        <div class="chart-placeholder">Graph coming soon</div>
-                    </div>
-                </div>
-            </div>
+            <!-- Overview sections will be dynamically generated here -->
         </div>
 
         <!-- Economic Tab -->
         <div id="economic" class="tab-content">
             <div class="tab-explainer">
-                <p>The economy currently serves human interests because it depends on human labor and consumption. As AI replaces workers, takes over business decisions and drives demand, this alignment may erode — markets could increasingly optimize for AI-driven activities rather than human needs. These metrics track how much economic influence remains in human hands.</p>
+                <p>Loading...</p>
             </div>
-
-            <div class="section">
-                <h2 class="section-title">Influence of Human Labor</h2>
-                <div class="section-explainer">
-                    <p>[Add section explainer about how the influence of human labor relates to economic disempowerment]</p>
-                </div>
-                <div class="chart-grid">
-                    <div class="chart-container">
-                        <div class="chart-header">
-                            <h3 class="chart-title">
-                                Labor share of GDP in the US
-                                <span class="info-icon">i
-                                    <div class="info-popup">
-                                        <strong>Data Source:</strong>
-                                        <p>Federal Reserve Economic Data (FRED)</p>
-                                        <strong>Limitations:</strong>
-                                        <p>[Add limitations and caveats]</p>
-                                    </div>
-                                </span>
-                            </h3>
-                            <div class="chart-explainer">As human labor becomes a smaller part of the economy due to AI automation, people will lose the power over economic decisions and outputs.</div>
-                        </div>
-                        <iframe class="chart-iframe" src="generated_html/labor_share_gdp.html"></iframe>
-                    </div>
-                    <div class="chart-container">
-                        <div class="chart-header">
-                            <h3 class="chart-title">
-                                Total % of unemployment [Worldbank]
-                                <span class="info-icon">i
-                                    <div class="info-popup">
-                                        <strong>Data Source:</strong>
-                                        <p>World Bank</p>
-                                        <strong>Limitations:</strong>
-                                        <p>[Add limitations and caveats]</p>
-                                    </div>
-                                </span>
-                            </h3>
-                            <div class="chart-explainer">[Add explainer about how this metric relates to Gradual Disempowerment]</div>
-                        </div>
-                        <iframe class="chart-iframe" src="generated_html/unemployment_rate.html"></iframe>
-                    </div>
-                    <div class="chart-container">
-                        <div class="chart-header">
-                            <h3 class="chart-title">
-                                Median wage growth vs. productivity growth [OECD]
-                                <span class="info-icon">i
-                                    <div class="info-popup">
-                                        <strong>Data Source:</strong>
-                                        <p>OECD</p>
-                                        <strong>Limitations:</strong>
-                                        <p>[Add limitations and caveats]</p>
-                                    </div>
-                                </span>
-                            </h3>
-                            <div class="chart-explainer">[Add explainer about how this metric relates to Gradual Disempowerment]</div>
-                        </div>
-                        <div class="chart-placeholder">Graph coming soon</div>
-                    </div>
-                    <div class="chart-container">
-                        <div class="chart-header">
-                            <h3 class="chart-title">
-                                # of AI-driven layoffs
-                                <span class="info-icon">i
-                                    <div class="info-popup">
-                                        <strong>Data Source:</strong>
-                                        <p>[Add data source information]</p>
-                                        <strong>Limitations:</strong>
-                                        <p>[Add limitations and caveats]</p>
-                                    </div>
-                                </span>
-                            </h3>
-                            <div class="chart-explainer">[Add explainer about how this metric relates to Gradual Disempowerment]</div>
-                        </div>
-                        <div class="chart-placeholder">Graph coming soon</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="section">
-                <h2 class="section-title">Influence of Human Consumption</h2>
-                <div class="section-explainer">
-                    <p>Markets produce what buyers want. Today, human consumers drive most final demand—companies ultimately exist to sell things to people. But if AI systems increasingly control purchasing decisions (through B2B automation, AI procurement agents, or algorithmic spending), human preferences become less central to what gets produced. An economy optimizing for AI customers rather than human ones would be a key sign of disempowerment.</p>
-                </div>
-                <div class="chart-grid">
-                    <div class="chart-container">
-                        <div class="chart-header">
-                            <h3 class="chart-title">
-                                % of gross domestic product for Personal consumption expenditures [World Bank]
-                                <span class="info-icon">i
-                                    <div class="info-popup">
-                                        <strong>Data Source:</strong>
-                                        <p>World Bank - World Development Indicators</p>
-                                        <strong>Limitations:</strong>
-                                        <p>Data availability varies by country and year. Includes household and non-profit institution consumption.</p>
-                                    </div>
-                                </span>
-                            </h3>
-                            <div class="chart-explainer">Personal consumption as share of GDP measures how much of economic output goes directly to satisfying human wants. A sustained decline could indicate that markets are shifting toward serving non-human demand—though short-term fluctuations often reflect business cycles rather than structural change.</div>
-                        </div>
-                        <iframe class="chart-iframe" src="generated_html/personal_consumption_share.html"></iframe>
-                    </div>
-                </div>
-            </div>
-
-            <div class="section">
-                <h2 class="section-title">AI Decision Making in the Economy</h2>
-                <div class="section-explainer">
-                    <p>[Add section explainer about how AI decision-making in businesses relates to economic disempowerment]</p>
-                </div>
-                <div class="chart-grid">
-                    <div class="chart-container">
-                        <div class="chart-header">
-                            <h3 class="chart-title">
-                                Share of Companies Using Artificial Intelligence [McKinsey]
-                                <span class="info-icon">i
-                                    <div class="info-popup">
-                                        <strong>Data Source:</strong>
-                                        <p>McKinsey Global Survey on AI</p>
-                                        <strong>Limitations:</strong>
-                                        <p>Obtained via <a href="https://ourworldindata.org/grapher/share-companies-using-artificial-intelligence" target="_blank" rel="noopener noreferrer">Our World in Data</a>, see their link for the full remarks.</p>
-                                    </div>
-                                </span>
-                            </h3>
-                            <div class="chart-explainer">Shows the percentage of organizations reporting having adopted AI. The global trend (All geographies) shows rapid acceleration in 2024.</div>
-                        </div>
-                        <iframe class="chart-iframe" src="generated_html/economy_organizations_adopted_ai.html" style="height: 450px;"></iframe>
-                    </div>
-                    <div class="chart-container">
-                        <div class="chart-header">
-                            <h3 class="chart-title">
-                                Survey on number of business functions where AI is used [McKinsey]
-                                <span class="info-icon">i
-                                    <div class="info-popup">
-                                        <strong>Data Source:</strong>
-                                        <p>McKinsey</p>
-                                        <strong>Limitations:</strong>
-                                        <p>[Add limitations and caveats]</p>
-                                    </div>
-                                </span>
-                            </h3>
-                            <div class="chart-explainer">[Add explainer about how this metric relates to Gradual Disempowerment]</div>
-                        </div>
-                        <div class="chart-placeholder">Graph coming soon</div>
-                    </div>
-                    <div class="chart-container">
-                        <div class="chart-header">
-                            <h3 class="chart-title">
-                                Fraction of business decisions/spending made by AIs
-                                <span class="info-icon">i
-                                    <div class="info-popup">
-                                        <strong>Data Source:</strong>
-                                        <p>[Add data source information]</p>
-                                        <strong>Limitations:</strong>
-                                        <p>[Add limitations and caveats]</p>
-                                    </div>
-                                </span>
-                            </h3>
-                            <div class="chart-explainer">[Add explainer about how this metric relates to Gradual Disempowerment]</div>
-                        </div>
-                        <div class="chart-placeholder">Graph coming soon</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="section">
-                <h2 class="section-title">AI Economy Impact</h2>
-                <div class="section-explainer">
-                    <p>[Add section explainer about how AI's economic impact relates to gradual disempowerment]</p>
-                </div>
-                <div class="chart-grid">
-                    <div class="chart-container">
-                        <div class="chart-header">
-                            <h3 class="chart-title">
-                                AI company market cap as % of S&P 500
-                                <span class="info-icon">i
-                                    <div class="info-popup">
-                                        <strong>Data Source:</strong>
-                                        <p>[Add data source information]</p>
-                                        <strong>Limitations:</strong>
-                                        <p>[Add limitations and caveats]</p>
-                                    </div>
-                                </span>
-                            </h3>
-                            <div class="chart-explainer">[Add explainer about how this metric relates to Gradual Disempowerment]</div>
-                        </div>
-                        <div class="chart-placeholder">Graph coming soon</div>
-                    </div>
-                    <div class="chart-container">
-                        <div class="chart-header">
-                            <h3 class="chart-title">
-                                % of market growth caused by AI companies
-                                <span class="info-icon">i
-                                    <div class="info-popup">
-                                        <strong>Data Source:</strong>
-                                        <p>[Add data source information]</p>
-                                        <strong>Limitations:</strong>
-                                        <p>[Add limitations and caveats]</p>
-                                    </div>
-                                </span>
-                            </h3>
-                            <div class="chart-explainer">[Add explainer about how this metric relates to Gradual Disempowerment]</div>
-                        </div>
-                        <div class="chart-placeholder">Graph coming soon</div>
-                    </div>
-                    <div class="chart-container">
-                        <div class="chart-header">
-                            <h3 class="chart-title">
-                                Investment in AI companies/startups [State of AI Report]
-                                <span class="info-icon">i
-                                    <div class="info-popup">
-                                        <strong>Data Source:</strong>
-                                        <p>State of AI Report</p>
-                                        <strong>Limitations:</strong>
-                                        <p>[Add limitations and caveats]</p>
-                                    </div>
-                                </span>
-                            </h3>
-                            <div class="chart-explainer">[Add explainer about how this metric relates to Gradual Disempowerment]</div>
-                        </div>
-                        <div class="chart-placeholder">Graph coming soon</div>
-                    </div>
-                    <div class="chart-container">
-                        <div class="chart-header">
-                            <h3 class="chart-title">
-                                Datacenter / AI energy usage as % of national/industrial energy
-                                <span class="info-icon">i
-                                    <div class="info-popup">
-                                        <strong>Data Source:</strong>
-                                        <p>[Add data source information]</p>
-                                        <strong>Limitations:</strong>
-                                        <p>[Add limitations and caveats]</p>
-                                    </div>
-                                </span>
-                            </h3>
-                            <div class="chart-explainer">[Add explainer about how this metric relates to Gradual Disempowerment]</div>
-                        </div>
-                        <div class="chart-placeholder">Graph coming soon</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="section">
-                <h2 class="section-title">Productivity Improvements from AI</h2>
-                <div class="section-explainer">
-                    <p>[Add section explainer about how AI-driven productivity gains relate to economic disempowerment]</p>
-                </div>
-                <div class="chart-grid">
-                    <div class="chart-container">
-                        <div class="chart-header">
-                            <h3 class="chart-title">
-                                Growth of AI-heavy industries vs AI-light industries
-                                <span class="info-icon">i
-                                    <div class="info-popup">
-                                        <strong>Data Source:</strong>
-                                        <p>[Add data source information]</p>
-                                        <strong>Limitations:</strong>
-                                        <p>[Add limitations and caveats]</p>
-                                    </div>
-                                </span>
-                            </h3>
-                            <div class="chart-explainer">[Add explainer about how this metric relates to Gradual Disempowerment]</div>
-                        </div>
-                        <div class="chart-placeholder">Graph coming soon</div>
-                    </div>
-                    <div class="chart-container">
-                        <div class="chart-header">
-                            <h3 class="chart-title">
-                                Output per employee. Compare AI-intensive industries vs others [EuroStat]
-                                <span class="info-icon">i
-                                    <div class="info-popup">
-                                        <strong>Data Source:</strong>
-                                        <p>EuroStat</p>
-                                        <strong>Limitations:</strong>
-                                        <p>[Add limitations and caveats]</p>
-                                    </div>
-                                </span>
-                            </h3>
-                            <div class="chart-explainer">[Add explainer about how this metric relates to Gradual Disempowerment]</div>
-                        </div>
-                        <div class="chart-placeholder">Graph coming soon</div>
-                    </div>
-                </div>
-            </div>
+            <!-- Sections will be dynamically generated here -->
         </div>
 
         <!-- Governmental Tab -->
         <div id="governmental" class="tab-content">
             <div class="tab-explainer">
-                <p>[Add governmental tab explainer about how governmental factors contribute to Gradual Disempowerment]</p>
+                <p>Loading...</p>
             </div>
-
-            <div class="section">
-                <h2 class="section-title">Reliance of the state financing on humans</h2>
-                <div class="section-explainer">
-                    <p>[Add section explainer about how state financing reliance on humans relates to governmental disempowerment]</p>
-                </div>
-                <div class="chart-grid">
-                    <div class="chart-container">
-                        <div class="chart-header">
-                            <h3 class="chart-title">
-                                % of total government revenue from personal income taxes vs. corporate or AI-sector taxes
-                                <span class="info-icon">i
-                                    <div class="info-popup">
-                                        <strong>Data Source:</strong>
-                                        <p>[Add data source information]</p>
-                                        <strong>Limitations:</strong>
-                                        <p>[Add limitations and caveats]</p>
-                                    </div>
-                                </span>
-                            </h3>
-                            <div class="chart-explainer">[Add explainer about how this metric relates to Gradual Disempowerment]</div>
-                        </div>
-                        <div class="chart-placeholder">Graph coming soon</div>
-                    </div>
-                    <div class="chart-container">
-                        <div class="chart-header">
-                            <h3 class="chart-title">
-                                Share of national income from AI-heavy sectors
-                                <span class="info-icon">i
-                                    <div class="info-popup">
-                                        <strong>Data Source:</strong>
-                                        <p>[Add data source information]</p>
-                                        <strong>Limitations:</strong>
-                                        <p>[Add limitations and caveats]</p>
-                                    </div>
-                                </span>
-                            </h3>
-                            <div class="chart-explainer">[Add explainer about how this metric relates to Gradual Disempowerment]</div>
-                        </div>
-                        <div class="chart-placeholder">Graph coming soon</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="section">
-                <h2 class="section-title">Use of AI vs Human Labor in Government</h2>
-                <div class="section-explainer">
-                    <p>[Add section explainer about how AI adoption in government relates to governmental disempowerment]</p>
-                </div>
-                <div class="chart-grid">
-                    <div class="chart-container">
-                        <div class="chart-header">
-                            <h3 class="chart-title">
-                                Use of AI for surveillance purposes [AI Global Surveillance Index]
-                                <span class="info-icon">i
-                                    <div class="info-popup">
-                                        <strong>Data Source:</strong>
-                                        <p>AI Global Surveillance Index</p>
-                                        <strong>Limitations:</strong>
-                                        <p>[Add limitations and caveats]</p>
-                                    </div>
-                                </span>
-                            </h3>
-                            <div class="chart-explainer">[Add explainer about how this metric relates to Gradual Disempowerment]</div>
-                        </div>
-                        <div class="chart-placeholder">Graph coming soon</div>
-                    </div>
-                    <div class="chart-container">
-                        <div class="chart-header">
-                            <h3 class="chart-title">
-                                Amount of Government spending on procurement to AI Companies [AI Index]
-                                <span class="info-icon">i
-                                    <div class="info-popup">
-                                        <strong>Data Source:</strong>
-                                        <p>AI Index Report - Public spending on AI-related contracts</p>
-                                        <strong>Limitations:</strong>
-                                        <p>[Add limitations and caveats]</p>
-                                    </div>
-                                </span>
-                            </h3>
-                            <div class="chart-explainer">Government spending on AI reflects how governments are increasingly relying on AI systems for public services and decision-making.</div>
-                        </div>
-                        <iframe src="generated_html/public_investment.html" style="width: 100%; height: 450px; border: none;"></iframe>
-                    </div>
-                    <div class="chart-container">
-                        <div class="chart-header">
-                            <h3 class="chart-title">
-                                Length/Complexity of legislation
-                                <span class="info-icon">i
-                                    <div class="info-popup">
-                                        <strong>Data Source:</strong>
-                                        <p>[Add data source information]</p>
-                                        <strong>Limitations:</strong>
-                                        <p>[Add limitations and caveats]</p>
-                                    </div>
-                                </span>
-                            </h3>
-                            <div class="chart-explainer">[Add explainer about how this metric relates to Gradual Disempowerment]</div>
-                        </div>
-                        <div class="chart-placeholder">Graph coming soon</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="section">
-                <h2 class="section-title">Human influence over governments</h2>
-                <div class="section-explainer">
-                    <p>[Add section explainer about how human influence over government relates to governmental disempowerment]</p>
-                </div>
-                <div class="chart-grid">
-                    <div class="chart-container">
-                        <div class="chart-header">
-                            <h3 class="chart-title">
-                                Democracy Index worldwide [OWID]
-                                <span class="info-icon">i
-                                    <div class="info-popup">
-                                        <strong>Data Source:</strong>
-                                        <p>Our World in Data (OWID)</p>
-                                        <strong>Limitations:</strong>
-                                        <p>[Add limitations and caveats]</p>
-                                    </div>
-                                </span>
-                            </h3>
-                            <div class="chart-explainer">[Add explainer about how this metric relates to Gradual Disempowerment]</div>
-                        </div>
-                        <div class="chart-placeholder">Graph coming soon</div>
-                    </div>
-                    <div class="chart-container">
-                        <div class="chart-header">
-                            <h3 class="chart-title">
-                                Voter Turnout: % eligible citizens voting in national elections
-                                <span class="info-icon">i
-                                    <div class="info-popup">
-                                        <strong>Data Source:</strong>
-                                        <p>[Add data source information]</p>
-                                        <strong>Limitations:</strong>
-                                        <p>[Add limitations and caveats]</p>
-                                    </div>
-                                </span>
-                            </h3>
-                            <div class="chart-explainer">[Add explainer about how this metric relates to Gradual Disempowerment]</div>
-                        </div>
-                        <div class="chart-placeholder">Graph coming soon</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="section">
-                <h2 class="section-title">Misalignment of Governments</h2>
-                <div class="section-explainer">
-                    <p>[Add section explainer about how governmental misalignment relates to governmental disempowerment]</p>
-                </div>
-                <div class="chart-grid">
-                    <div class="chart-container">
-                        <div class="chart-header">
-                            <h3 class="chart-title">
-                                Amount of spending on education/healthcare/…
-                                <span class="info-icon">i
-                                    <div class="info-popup">
-                                        <strong>Data Source:</strong>
-                                        <p>[Add data source information]</p>
-                                        <strong>Limitations:</strong>
-                                        <p>[Add limitations and caveats]</p>
-                                    </div>
-                                </span>
-                            </h3>
-                            <div class="chart-explainer">[Add explainer about how this metric relates to Gradual Disempowerment]</div>
-                        </div>
-                        <div class="chart-placeholder">Graph coming soon</div>
-                    </div>
-                    <div class="chart-container">
-                        <div class="chart-header">
-                            <h3 class="chart-title">
-                                Democracy Index
-                                <span class="info-icon">i
-                                    <div class="info-popup">
-                                        <strong>Data Source:</strong>
-                                        <p>[Add data source information]</p>
-                                        <strong>Limitations:</strong>
-                                        <p>[Add limitations and caveats]</p>
-                                    </div>
-                                </span>
-                            </h3>
-                            <div class="chart-explainer">[Add explainer about how this metric relates to Gradual Disempowerment]</div>
-                        </div>
-                        <div class="chart-placeholder">Graph coming soon</div>
-                    </div>
-                </div>
-            </div>
+            <!-- Sections will be dynamically generated here -->
         </div>
 
         <!-- Cultural Tab -->
         <div id="cultural" class="tab-content">
             <div class="tab-explainer">
-                <p>[Add cultural tab explainer about how cultural factors contribute to Gradual Disempowerment]</p>
+                <p>Loading...</p>
             </div>
-
-            <div class="section">
-                <h2 class="section-title">Cultural Production</h2>
-                <div class="section-explainer">
-                    <p>[Add section explainer about how AI-generated cultural content relates to cultural disempowerment]</p>
-                </div>
-                <div class="chart-grid">
-                    <div class="chart-container">
-                        <div class="chart-header">
-                            <h3 class="chart-title">
-                                Amount of reddit content written by AI [Originality.AI]
-                                <span class="info-icon">i
-                                    <div class="info-popup">
-                                        <strong>Data Source:</strong>
-                                        <p>Originality.AI</p>
-                                        <strong>Limitations:</strong>
-                                        <p>[Add limitations and caveats]</p>
-                                    </div>
-                                </span>
-                            </h3>
-                            <div class="chart-explainer">[Add explainer about how this metric relates to Gradual Disempowerment]</div>
-                        </div>
-                        <div class="chart-placeholder">Graph coming soon</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="section">
-                <h2 class="section-title">AI-mediated Consumption</h2>
-                <div class="section-explainer">
-                    <p>[Add section explainer about how AI-mediated content consumption relates to cultural disempowerment]</p>
-                </div>
-
-                <div class="full-width-chart">
-                    <div class="chart-container">
-                        <div class="chart-header">
-                            <h3 class="chart-title">
-                                Number of adults who get their news from chatbots [Pewresearch]
-                                <span class="info-icon">i
-                                    <div class="info-popup">
-                                        <strong>Data Source:</strong>
-                                        <p>Pew Research Center, aggregated using Gemini</p>
-                                        <strong>Limitations:</strong>
-                                        <p>[Add limitations and caveats]</p>
-                                    </div>
-                                </span>
-                            </h3>
-                            <div class="chart-explainer">[Add explainer about how this metric relates to Gradual Disempowerment]</div>
-                        </div>
-                        <iframe class="chart-iframe" src="generated_html/world_news_media.html"></iframe>
-                    </div>
-                </div>
-
-                <div class="chart-grid">
-                    <div class="chart-container">
-                        <div class="chart-header">
-                            <h3 class="chart-title">
-                                % of web traffic done by AIs [Seraranking]
-                                <span class="info-icon">i
-                                    <div class="info-popup">
-                                        <strong>Data Source:</strong>
-                                        <p>Seraranking</p>
-                                        <strong>Limitations:</strong>
-                                        <p>[Add limitations and caveats]</p>
-                                    </div>
-                                </span>
-                            </h3>
-                            <div class="chart-explainer">[Add explainer about how this metric relates to Gradual Disempowerment]</div>
-                        </div>
-                        <div class="chart-placeholder">Graph coming soon</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="section">
-                <h2 class="section-title">Human-AI relationships</h2>
-                <div class="section-explainer">
-                    <p>[Add section explainer about how human-AI relationships relate to cultural disempowerment]</p>
-                </div>
-                <div class="chart-grid">
-                    <div class="chart-container">
-                        <div class="chart-header">
-                            <h3 class="chart-title">
-                                # of people in romantic relationships with AIs
-                                <span class="info-icon">i
-                                    <div class="info-popup">
-                                        <strong>Data Source:</strong>
-                                        <p>[Add data source information]</p>
-                                        <strong>Limitations:</strong>
-                                        <p>[Add limitations and caveats]</p>
-                                    </div>
-                                </span>
-                            </h3>
-                            <div class="chart-explainer">[Add explainer about how this metric relates to Gradual Disempowerment]</div>
-                        </div>
-                        <div class="chart-placeholder">Graph coming soon</div>
-                    </div>
-                    <div class="chart-container">
-                        <div class="chart-header">
-                            <h3 class="chart-title">
-                                # of people subscribed to r/AIRelationships
-                                <span class="info-icon">i
-                                    <div class="info-popup">
-                                        <strong>Data Source:</strong>
-                                        <p>[Add data source information]</p>
-                                        <strong>Limitations:</strong>
-                                        <p>[Add limitations and caveats]</p>
-                                    </div>
-                                </span>
-                            </h3>
-                            <div class="chart-explainer">[Add explainer about how this metric relates to Gradual Disempowerment]</div>
-                        </div>
-                        <div class="chart-placeholder">Graph coming soon</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="section">
-                <h2 class="section-title">Inter AI Culture</h2>
-                <div class="section-explainer">
-                    <p>[Add section explainer about how inter-AI culture and AI-to-AI interactions relate to cultural disempowerment]</p>
-                </div>
-                <div class="chart-grid">
-                    <div class="chart-container">
-                        <div class="chart-header">
-                            <h3 class="chart-title">
-                                % of generated content deemed "unintelligible" or "alien" by humans
-                                <span class="info-icon">i
-                                    <div class="info-popup">
-                                        <strong>Data Source:</strong>
-                                        <p>[Add data source information]</p>
-                                        <strong>Limitations:</strong>
-                                        <p>[Add limitations and caveats]</p>
-                                    </div>
-                                </span>
-                            </h3>
-                            <div class="chart-explainer">[Add explainer about how this metric relates to Gradual Disempowerment]</div>
-                        </div>
-                        <div class="chart-placeholder">Graph coming soon</div>
-                    </div>
-                    <div class="chart-container">
-                        <div class="chart-header">
-                            <h3 class="chart-title">
-                                % of AI training data produced by AIs
-                                <span class="info-icon">i
-                                    <div class="info-popup">
-                                        <strong>Data Source:</strong>
-                                        <p>[Add data source information]</p>
-                                        <strong>Limitations:</strong>
-                                        <p>[Add limitations and caveats]</p>
-                                    </div>
-                                </span>
-                            </h3>
-                            <div class="chart-explainer">[Add explainer about how this metric relates to Gradual Disempowerment]</div>
-                        </div>
-                        <div class="chart-placeholder">Graph coming soon</div>
-                    </div>
-                </div>
-            </div>
+            <!-- Sections will be dynamically generated here -->
         </div>
 
         <!-- News Tab -->
@@ -1221,148 +77,1208 @@
             <h2 style="color: #333; margin-bottom: 10px;">Recent News</h2>
             <p style="color: #666; margin-bottom: 20px; font-size: 14px;">Latest developments in AI influence across government, business, and society</p>
 
+            <!-- News items will be dynamically loaded here -->
             <div class="news-container">
-                <!-- News Card 8 - Most Recent -->
-                <div class="news-card">
-                    <a href="https://www.npr.org/2025/10/03/nx-s1-5560200/openai-sora-social-media" target="_blank" rel="noopener noreferrer" style="text-decoration: none;">
-                        <div class="news-image" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; font-weight: 600; text-align: center; padding: 20px;">
-                            OpenAI<br>SORA 2
-                        </div>
-                    </a>
-                    <div class="news-content">
-                        <h3 class="news-header">OpenAI Launches SORA 2 Social App</h3>
-                        <div class="news-date">September 30, 2025</div>
-                        <p class="news-summary">OpenAI releases SORA 2 with dedicated social app for creating and sharing AI-generated videos, enabling users to appear in AI content through "cameos" feature just days after Meta's similar launch.</p>
-                        <a href="https://www.npr.org/2025/10/03/nx-s1-5560200/openai-sora-social-media" target="_blank" rel="noopener noreferrer" class="news-link">Read more →</a>
-                    </div>
-                </div>
+                <!-- Loading placeholder -->
+                <p style="text-align: center; color: #999;">Loading news...</p>
+            </div>
+        </div>
+    </div>
 
-                <!-- News Card 7 -->
-                <div class="news-card">
-                    <a href="https://futurism.com/future-society/accenture-layoffs-ai" target="_blank" rel="noopener noreferrer" style="text-decoration: none;">
-                        <div class="news-image" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); color: white; font-weight: 600; text-align: center; padding: 20px;">
-                            Accenture<br>Layoffs
-                        </div>
-                    </a>
-                    <div class="news-content">
-                        <h3 class="news-header">Accenture Fires 11,000 Over AI</h3>
-                        <div class="news-date">September 26, 2025</div>
-                        <p class="news-summary">Accenture CEO Julie Sweet announces layoffs of over 11,000 employees who cannot be reskilled in AI, as part of $865M restructuring prioritizing AI capabilities over existing workforce.</p>
-                        <a href="https://futurism.com/future-society/accenture-layoffs-ai" target="_blank" rel="noopener noreferrer" class="news-link">Read more →</a>
-                    </div>
-                </div>
-
-                <!-- News Card 6 -->
-                <div class="news-card">
-                    <a href="https://techcrunch.com/2025/09/25/meta-launches-vibes-a-short-form-video-feed-of-ai-slop/" target="_blank" rel="noopener noreferrer" style="text-decoration: none;">
-                        <div class="news-image" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); color: white; font-weight: 600; text-align: center; padding: 20px;">
-                            Meta<br>"Vibes"
-                        </div>
-                    </a>
-                    <div class="news-content">
-                        <h3 class="news-header">Meta Launches AI Video Feed "Vibes"</h3>
-                        <div class="news-date">September 25, 2025</div>
-                        <p class="news-summary">Meta introduces "Vibes," a TikTok-style feed entirely populated with AI-generated videos, allowing users to create, remix and share AI content despite widespread user criticism.</p>
-                        <a href="https://techcrunch.com/2025/09/25/meta-launches-vibes-a-short-form-video-feed-of-ai-slop/" target="_blank" rel="noopener noreferrer" class="news-link">Read more →</a>
-                    </div>
-                </div>
-
-                <!-- News Card 5 -->
-                <div class="news-card">
-                    <a href="https://www.euronews.com/next/2025/08/07/swedens-prime-minister-uses-chatgpt-how-else-are-governments-using-chatbots" target="_blank" rel="noopener noreferrer" style="text-decoration: none;">
-                        <div class="news-image" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); color: white; font-weight: 600; text-align: center; padding: 20px;">
-                            UK Parliament<br>AI Speeches
-                        </div>
-                    </a>
-                    <div class="news-content">
-                        <h3 class="news-header">UK MPs Using AI for Speeches</h3>
-                        <div class="news-date">September 12, 2025</div>
-                        <p class="news-summary">Investigation reveals British MPs increasingly using ChatGPT to write parliamentary speeches, with telltale AI phrases like "I rise to speak" spiking 175% in 2025.</p>
-                        <a href="https://www.euronews.com/next/2025/08/07/swedens-prime-minister-uses-chatgpt-how-else-are-governments-using-chatbots" target="_blank" rel="noopener noreferrer" class="news-link">Read more →</a>
-                    </div>
-                </div>
-
-                <!-- News Card 4 -->
-                <div class="news-card">
-                    <a href="https://www.euronews.com/next/2025/09/12/albania-appoints-worlds-first-ai-government-minister-to-root-out-corruption" target="_blank" rel="noopener noreferrer" style="text-decoration: none;">
-                        <div class="news-image" style="background: linear-gradient(135deg, #30cfd0 0%, #330867 100%); color: white; font-weight: 600; text-align: center; padding: 20px;">
-                            Albania<br>AI Minister
-                        </div>
-                    </a>
-                    <div class="news-content">
-                        <h3 class="news-header">Albania Appoints AI Government Minister</h3>
-                        <div class="news-date">September 12, 2025</div>
-                        <p class="news-summary">Albania appoints world's first AI "minister" named Diella to oversee public procurement and combat corruption, raising questions about AI's constitutional role in government.</p>
-                        <a href="https://www.euronews.com/next/2025/09/12/albania-appoints-worlds-first-ai-government-minister-to-root-out-corruption" target="_blank" rel="noopener noreferrer" class="news-link">Read more →</a>
-                    </div>
-                </div>
-
-                <!-- News Card 3 -->
-                <div class="news-card">
-                    <a href="https://www.wsj.com/politics/silicon-valley-launches-pro-ai-pacs-to-defend-industry-in-midterm-elections-287905b3" target="_blank" rel="noopener noreferrer" style="text-decoration: none;">
-                        <div class="news-image" style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%); color: #333; font-weight: 600; text-align: center; padding: 20px;">
-                            Silicon Valley<br>Super-PACs
-                        </div>
-                    </a>
-                    <div class="news-content">
-                        <h3 class="news-header">Silicon Valley Launches Pro-AI Super-PACs</h3>
-                        <div class="news-date">August 25, 2025</div>
-                        <p class="news-summary">Silicon Valley launches "Leading the Future" super-PAC with over $100M from Andreessen Horowitz, OpenAI's Greg Brockman, and others to influence 2026 midterms and oppose AI regulation; Meta simultaneously launches California super-PAC.</p>
-                        <a href="https://www.wsj.com/politics/silicon-valley-launches-pro-ai-pacs-to-defend-industry-in-midterm-elections-287905b3" target="_blank" rel="noopener noreferrer" class="news-link">Read more →</a>
-                    </div>
-                </div>
-
-                <!-- News Card 2 -->
-                <div class="news-card">
-                    <a href="https://www.euronews.com/next/2025/08/07/swedens-prime-minister-uses-chatgpt-how-else-are-governments-using-chatbots" target="_blank" rel="noopener noreferrer" style="text-decoration: none;">
-                        <div class="news-image" style="background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%); color: #333; font-weight: 600; text-align: center; padding: 20px;">
-                            Sweden<br>PM ChatGPT
-                        </div>
-                    </a>
-                    <div class="news-content">
-                        <h3 class="news-header">Swedish PM Uses ChatGPT for Governance</h3>
-                        <div class="news-date">August 5-7, 2025</div>
-                        <p class="news-summary">Swedish Prime Minister Ulf Kristersson reveals he regularly uses ChatGPT and LeChat for "second opinions" on governance decisions, sparking backlash about AI's role in democratic leadership.</p>
-                        <a href="https://www.euronews.com/next/2025/08/07/swedens-prime-minister-uses-chatgpt-how-else-are-governments-using-chatbots" target="_blank" rel="noopener noreferrer" class="news-link">Read more →</a>
-                    </div>
-                </div>
-
-                <!-- News Card 1 - Oldest -->
-                <div class="news-card">
-                    <a href="https://www.whitehouse.gov/wp-content/uploads/2025/07/Americas-AI-Action-Plan.pdf" target="_blank" rel="noopener noreferrer" style="text-decoration: none;">
-                        <div class="news-image" style="background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%); color: #333; font-weight: 600; text-align: center; padding: 20px;">
-                            White House<br>AI Plan
-                        </div>
-                    </a>
-                    <div class="news-content">
-                        <h3 class="news-header">Winning the Race: America's AI Action Plan</h3>
-                        <div class="news-date">July 23, 2025</div>
-                        <p class="news-summary">Trump administration releases AI Action Plan emphasizing deregulation, AI infrastructure development, and US AI dominance, with government adoption positioned as essential for efficiency and competitiveness.</p>
-                        <a href="https://www.whitehouse.gov/wp-content/uploads/2025/07/Americas-AI-Action-Plan.pdf" target="_blank" rel="noopener noreferrer" class="news-link">Read more →</a>
-                    </div>
-                </div>
+    <!-- Info Modal -->
+    <div id="infoModal" class="modal-overlay" onclick="closeModalOnOverlay(event)">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <div class="modal-header">
+                <h3 class="modal-title" id="modalTitle">Data Information</h3>
+                <button class="modal-close" onclick="closeInfoModal()">&times;</button>
+            </div>
+            <div class="modal-body" id="modalBody">
+                <!-- Content will be injected here -->
             </div>
         </div>
     </div>
 
     <script>
+        // --- REAL DATA EMBEDDED FROM JSON FILES ---
+
+        const NEWS_DATA = [
+          {
+            "id": 8,
+            "title": "OpenAI Launches SORA 2 Social App",
+            "date": "September 30, 2025",
+            "summary": "OpenAI releases SORA 2 with dedicated social app for creating and sharing AI-generated videos, enabling users to appear in AI content through \"cameos\" feature just days after Meta's similar launch.",
+            "url": "https://www.npr.org/2025/10/03/nx-s1-5560200/openai-sora-social-media",
+            "imageLabel": "OpenAI<br>SORA 2",
+            "imageGradient": "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+            "imageColor": "white"
+          },
+          {
+            "id": 7,
+            "title": "Accenture Fires 11,000 Over AI",
+            "date": "September 26, 2025",
+            "summary": "Accenture CEO Julie Sweet announces layoffs of over 11,000 employees who cannot be reskilled in AI, as part of $865M restructuring prioritizing AI capabilities over existing workforce.",
+            "url": "https://futurism.com/future-society/accenture-layoffs-ai",
+            "imageLabel": "Accenture<br>Layoffs",
+            "imageGradient": "linear-gradient(135deg, #f093fb 0%, #f5576c 100%)",
+            "imageColor": "white"
+          },
+          {
+            "id": 6,
+            "title": "Meta Launches AI Video Feed \"Vibes\"",
+            "date": "September 25, 2025",
+            "summary": "Meta introduces \"Vibes,\" a TikTok-style feed entirely populated with AI-generated videos, allowing users to create, remix and share AI content despite widespread user criticism.",
+            "url": "https://techcrunch.com/2025/09/25/meta-launches-vibes-a-short-form-video-feed-of-ai-slop/",
+            "imageLabel": "Meta<br>\"Vibes\"",
+            "imageGradient": "linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)",
+            "imageColor": "white"
+          },
+          {
+            "id": 5,
+            "title": "UK MPs Using AI for Speeches",
+            "date": "September 12, 2025",
+            "summary": "Investigation reveals British MPs increasingly using ChatGPT to write parliamentary speeches, with telltale AI phrases like \"I rise to speak\" spiking 175% in 2025.",
+            "url": "https://www.euronews.com/next/2025/08/07/swedens-prime-minister-uses-chatgpt-how-else-are-governments-using-chatbots",
+            "imageLabel": "UK Parliament<br>AI Speeches",
+            "imageGradient": "linear-gradient(135deg, #fa709a 0%, #fee140 100%)",
+            "imageColor": "white"
+          },
+          {
+            "id": 4,
+            "title": "Albania Appoints AI Government Minister",
+            "date": "September 12, 2025",
+            "summary": "Albania appoints world's first AI \"minister\" named Diella to oversee public procurement and combat corruption, raising questions about AI's constitutional role in government.",
+            "url": "https://www.euronews.com/next/2025/09/12/albania-appoints-worlds-first-ai-government-minister-to-root-out-corruption",
+            "imageLabel": "Albania<br>AI Minister",
+            "imageGradient": "linear-gradient(135deg, #30cfd0 0%, #330867 100%)",
+            "imageColor": "white"
+          },
+          {
+            "id": 3,
+            "title": "Silicon Valley Launches Pro-AI Super-PACs",
+            "date": "August 25, 2025",
+            "summary": "Silicon Valley launches \"Leading the Future\" super-PAC with over $100M from Andreessen Horowitz, OpenAI's Greg Brockman, and others to influence 2026 midterms and oppose AI regulation; Meta simultaneously launches California super-PAC.",
+            "url": "https://www.wsj.com/politics/silicon-valley-launches-pro-ai-pacs-to-defend-industry-in-midterm-elections-287905b3",
+            "imageLabel": "Silicon Valley<br>Super-PACs",
+            "imageGradient": "linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)",
+            "imageColor": "#333"
+          },
+          {
+            "id": 2,
+            "title": "Swedish PM Uses ChatGPT for Governance",
+            "date": "August 5-7, 2025",
+            "summary": "Swedish Prime Minister Ulf Kristersson reveals he regularly uses ChatGPT and LeChat for \"second opinions\" on governance decisions, sparking backlash about AI's role in democratic leadership.",
+            "url": "https://www.euronews.com/next/2025/08/07/swedens-prime-minister-uses-chatgpt-how-else-are-governments-using-chatbots",
+            "imageLabel": "Sweden<br>PM ChatGPT",
+            "imageGradient": "linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%)",
+            "imageColor": "#333"
+          },
+          {
+            "id": 1,
+            "title": "Winning the Race: America's AI Action Plan",
+            "date": "July 23, 2025",
+            "summary": "Trump administration releases AI Action Plan emphasizing deregulation, AI infrastructure development, and US AI dominance, with government adoption positioned as essential for efficiency and competitiveness.",
+            "url": "https://www.whitehouse.gov/wp-content/uploads/2025/07/Americas-AI-Action-Plan.pdf",
+            "imageLabel": "White House<br>AI Plan",
+            "imageGradient": "linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%)",
+            "imageColor": "#333"
+          }
+        ];
+
+        const CHARTS_DATA = {
+          "overview": {
+            "hero": {
+              "title": "AI Empowerment over Time (2010-2035)",
+              "explainer": "This chart aggregates all our disempowerment-related metrics into a single index that shows the overall disempowerment of humans.",
+              "iframe": "generated_html/gradual_disempowerment.html",
+              "modalId": "ai-empowerment"
+            },
+            "sections": [
+              {
+                "title": "Total Disempowerment (aggregated)",
+                "explainer": "[Add section explainer about total disempowerment metrics]",
+                "charts": [
+                  {
+                    "title": "World Map View over time (fake data)",
+                    "explainer": "[Add explainer about how this metric relates to Gradual Disempowerment]",
+                    "iframe": "generated_html/world_disempowerment.html",
+                    "modalId": "world-map",
+                    "fullWidth": true
+                  },
+                  {
+                    "title": "Country Trends (fake data)",
+                    "explainer": "[Add explainer about how this metric relates to Gradual Disempowerment]",
+                    "iframe": "generated_html/country_lines.html",
+                    "modalId": "country-trends",
+                    "fullWidth": true
+                  }
+                ]
+              },
+              {
+                "title": "Economic Disempowerment (aggregated)",
+                "explainer": "[Add section explainer about economic disempowerment metrics]",
+                "charts": [
+                  {
+                    "title": "Economic Disempowerment Index",
+                    "explainer": "[Add explainer about how this metric relates to Gradual Disempowerment]",
+                    "placeholder": true,
+                    "modalId": "economic-index"
+                  }
+                ]
+              },
+              {
+                "title": "Governmental Disempowerment (aggregated)",
+                "explainer": "[Add section explainer about governmental disempowerment metrics]",
+                "charts": [
+                  {
+                    "title": "Governmental Disempowerment Index",
+                    "explainer": "[Add explainer about how this metric relates to Gradual Disempowerment]",
+                    "placeholder": true,
+                    "modalId": "governmental-index"
+                  }
+                ]
+              },
+              {
+                "title": "Cultural Disempowerment (aggregated)",
+                "explainer": "[Add section explainer about cultural disempowerment metrics]",
+                "charts": [
+                  {
+                    "title": "Cultural Disempowerment Index",
+                    "explainer": "[Add explainer about how this metric relates to Gradual Disempowerment]",
+                    "placeholder": true,
+                    "modalId": "cultural-index"
+                  }
+                ]
+              }
+            ]
+          },
+          "economic": {
+            "tabExplainer": "The economy currently serves human interests because it depends on human labor and consumption. As AI replaces workers, takes over business decisions and drives demand, this alignment may erode — markets could increasingly optimize for AI-driven activities rather than human needs. These metrics track how much economic influence remains in human hands.",
+            "sections": [
+              {
+                "title": "Influence of Human Labor",
+                "explainer": "[Add section explainer about how the influence of human labor relates to economic disempowerment]",
+                "charts": [
+                  {
+                    "title": "Labor share of GDP in the US",
+                    "explainer": "As human labor becomes a smaller part of the economy due to AI automation, people will lose the power over economic decisions and outputs.",
+                    "iframe": "generated_html/labor_share_gdp.html",
+                    "modalId": "labor-share-gdp"
+                  },
+                  {
+                    "title": "Total % of unemployment [Worldbank]",
+                    "explainer": "[Add explainer about how this metric relates to Gradual Disempowerment]",
+                    "iframe": "generated_html/unemployment_rate.html",
+                    "modalId": "unemployment-rate"
+                  },
+                  {
+                    "title": "Median wage growth vs. productivity growth [OECD]",
+                    "explainer": "[Add explainer about how this metric relates to Gradual Disempowerment]",
+                    "placeholder": true,
+                    "modalId": "wage-productivity"
+                  },
+                  {
+                    "title": "# of AI-driven layoffs",
+                    "explainer": "[Add explainer about how this metric relates to Gradual Disempowerment]",
+                    "placeholder": true,
+                    "modalId": "ai-layoffs"
+                  }
+                ]
+              },
+              {
+                "title": "Influence of Human Consumption",
+                "explainer": "Markets produce what buyers want. Today, human consumers drive most final demand—companies ultimately exist to sell things to people. But if AI systems increasingly control purchasing decisions (through B2B automation, AI procurement agents, or algorithmic spending), human preferences become less central to what gets produced. An economy optimizing for AI customers rather than human ones would be a key sign of disempowerment.",
+                "charts": [
+                  {
+                    "title": "% of gross domestic product for Personal consumption expenditures [World Bank]",
+                    "explainer": "Personal consumption as share of GDP measures how much of economic output goes directly to satisfying human wants. A sustained decline could indicate that markets are shifting toward serving non-human demand—though short-term fluctuations often reflect business cycles rather than structural change.",
+                    "iframe": "generated_html/personal_consumption_share.html",
+                    "modalId": "personal-consumption"
+                  }
+                ]
+              },
+              {
+                "title": "AI Decision Making in the Economy",
+                "explainer": "[Add section explainer about how AI decision-making in businesses relates to economic disempowerment]",
+                "charts": [
+                  {
+                    "title": "Share of Companies Using Artificial Intelligence [McKinsey]",
+                    "explainer": "Shows the percentage of organizations reporting having adopted AI. The global trend (All geographies) shows rapid acceleration in 2024.",
+                    "iframe": "generated_html/economy_organizations_adopted_ai.html",
+                    "iframeHeight": "450px",
+                    "modalId": "companies-using-ai"
+                  },
+                  {
+                    "title": "Survey on number of business functions where AI is used [McKinsey]",
+                    "explainer": "[Add explainer about how this metric relates to Gradual Disempowerment]",
+                    "placeholder": true,
+                    "modalId": "ai-business-functions"
+                  },
+                  {
+                    "title": "Fraction of business decisions/spending made by AIs",
+                    "explainer": "[Add explainer about how this metric relates to Gradual Disempowerment]",
+                    "placeholder": true,
+                    "modalId": "ai-business-decisions"
+                  }
+                ]
+              },
+              {
+                "title": "AI Economy Impact",
+                "explainer": "[Add section explainer about how AI's economic impact relates to gradual disempowerment]",
+                "charts": [
+                  {
+                    "title": "AI company market cap as % of S&P 500",
+                    "explainer": "[Add explainer about how this metric relates to Gradual Disempowerment]",
+                    "placeholder": true,
+                    "modalId": "ai-market-cap"
+                  },
+                  {
+                    "title": "% of market growth caused by AI companies",
+                    "explainer": "[Add explainer about how this metric relates to Gradual Disempowerment]",
+                    "placeholder": true,
+                    "modalId": "ai-market-growth"
+                  },
+                  {
+                    "title": "Investment in AI companies/startups [State of AI Report]",
+                    "explainer": "[Add explainer about how this metric relates to Gradual Disempowerment]",
+                    "placeholder": true,
+                    "modalId": "ai-investment"
+                  },
+                  {
+                    "title": "Datacenter / AI energy usage as % of national/industrial energy",
+                    "explainer": "[Add explainer about how this metric relates to Gradual Disempowerment]",
+                    "placeholder": true,
+                    "modalId": "ai-energy-usage"
+                  }
+                ]
+              },
+              {
+                "title": "Productivity Improvements from AI",
+                "explainer": "[Add section explainer about how AI-driven productivity gains relate to economic disempowerment]",
+                "charts": [
+                  {
+                    "title": "Growth of AI-heavy industries vs AI-light industries",
+                    "explainer": "[Add explainer about how this metric relates to Gradual Disempowerment]",
+                    "placeholder": true,
+                    "modalId": "ai-industry-growth"
+                  },
+                  {
+                    "title": "Output per employee. Compare AI-intensive industries vs others [EuroStat]",
+                    "explainer": "[Add explainer about how this metric relates to Gradual Disempowerment]",
+                    "placeholder": true,
+                    "modalId": "output-per-employee"
+                  }
+                ]
+              }
+            ]
+          },
+          "governmental": {
+            "tabExplainer": "[Add governmental tab explainer about how governmental factors contribute to Gradual Disempowerment]",
+            "sections": [
+              {
+                "title": "Reliance of the state financing on humans",
+                "explainer": "[Add section explainer about how state financing reliance on humans relates to governmental disempowerment]",
+                "charts": [
+                  {
+                    "title": "% of total government revenue from personal income taxes vs. corporate or AI-sector taxes",
+                    "explainer": "[Add explainer about how this metric relates to Gradual Disempowerment]",
+                    "placeholder": true,
+                    "modalId": "govt-tax-revenue"
+                  },
+                  {
+                    "title": "Share of national income from AI-heavy sectors",
+                    "explainer": "[Add explainer about how this metric relates to Gradual Disempowerment]",
+                    "placeholder": true,
+                    "modalId": "ai-sector-income"
+                  }
+                ]
+              },
+              {
+                "title": "Use of AI vs Human Labor in Government",
+                "explainer": "[Add section explainer about how AI adoption in government relates to governmental disempowerment]",
+                "charts": [
+                  {
+                    "title": "Use of AI for surveillance purposes [AI Global Surveillance Index]",
+                    "explainer": "[Add explainer about how this metric relates to Gradual Disempowerment]",
+                    "placeholder": true,
+                    "modalId": "ai-surveillance"
+                  },
+                  {
+                    "title": "Amount of Government spending on procurement to AI Companies [AI Index]",
+                    "explainer": "Government spending on AI reflects how governments are increasingly relying on AI systems for public services and decision-making.",
+                    "iframe": "generated_html/public_investment.html",
+                    "iframeHeight": "450px",
+                    "iframeWidth": "100%",
+                    "modalId": "govt-ai-spending"
+                  },
+                  {
+                    "title": "Length/Complexity of legislation",
+                    "explainer": "[Add explainer about how this metric relates to Gradual Disempowerment]",
+                    "placeholder": true,
+                    "modalId": "legislation-complexity"
+                  }
+                ]
+              },
+              {
+                "title": "Human influence over governments",
+                "explainer": "[Add section explainer about how human influence over government relates to governmental disempowerment]",
+                "charts": [
+                  {
+                    "title": "Democracy Index worldwide [OWID]",
+ "explainer": "The Electoral Democracy Index measures to what extent political leaders are elected under comprehensive voting rights in free and fair elections, and can exercise their political power subject to the rule of law. Declining democracy worldwide could make populations more vulnerable to AI-driven authoritarianism.",
+                    "iframe": "generated_html/democracy_index.html",
+                    "modalId": "democracy-index-owid"
+                  },
+                  {
+                    "title": "Voter Turnout: % eligible citizens voting in national elections",
+                    "explainer": "[Add explainer about how this metric relates to Gradual Disempowerment]",
+                    "placeholder": true,
+                    "modalId": "voter-turnout"
+                  }
+                ]
+              },
+              {
+                "title": "Misalignment of Governments",
+                "explainer": "[Add section explainer about how governmental misalignment relates to governmental disempowerment]",
+                "charts": [
+                  {
+                    "title": "Amount of spending on education/healthcare/…",
+                    "explainer": "[Add explainer about how this metric relates to Gradual Disempowerment]",
+                    "placeholder": true,
+                    "modalId": "social-spending"
+                  },
+                  {
+                    "title": "Democracy Index",
+                    "explainer": "[Add explainer about how this metric relates to Gradual Disempowerment]",
+                    "placeholder": true,
+                    "modalId": "democracy-index"
+                  }
+                ]
+              }
+            ]
+          },
+          "cultural": {
+            "tabExplainer": "[Add cultural tab explainer about how cultural factors contribute to Gradual Disempowerment]",
+            "sections": [
+              {
+                "title": "Cultural Production",
+                "explainer": "[Add section explainer about how AI-generated cultural content relates to cultural disempowerment]",
+                "charts": [
+                  {
+                    "title": "Amount of reddit content written by AI [Originality.AI]",
+                    "explainer": "[Add explainer about how this metric relates to Gradual Disempowerment]",
+                    "placeholder": true,
+                    "modalId": "ai-reddit-content"
+                  }
+                ]
+              },
+              {
+                "title": "AI-mediated Consumption",
+                "explainer": "[Add section explainer about how AI-mediated content consumption relates to cultural disempowerment]",
+                "charts": [
+                  {
+                    "title": "Number of adults who get their news from chatbots [Pewresearch]",
+                    "explainer": "[Add explainer about how this metric relates to Gradual Disempowerment]",
+                    "iframe": "generated_html/world_news_media.html",
+                    "modalId": "chatbot-news",
+                    "fullWidth": true
+                  },
+                  {
+                    "title": "% of web traffic done by AIs [Seraranking]",
+                    "explainer": "[Add explainer about how this metric relates to Gradual Disempowerment]",
+                    "placeholder": true,
+                    "modalId": "ai-web-traffic"
+                  }
+                ]
+              },
+              {
+                "title": "Human-AI relationships",
+                "explainer": "[Add section explainer about how human-AI relationships relate to cultural disempowerment]",
+                "charts": [
+                  {
+                    "title": "# of people in romantic relationships with AIs",
+                    "explainer": "[Add explainer about how this metric relates to Gradual Disempowerment]",
+                    "placeholder": true,
+                    "modalId": "ai-romantic-relationships"
+                  },
+                  {
+                    "title": "# of people subscribed to r/AIRelationships",
+                    "explainer": "[Add explainer about how this metric relates to Gradual Disempowerment]",
+                    "placeholder": true,
+                    "modalId": "ai-relationships-subreddit"
+                  }
+                ]
+              },
+              {
+                "title": "Inter AI Culture",
+                "explainer": "[Add section explainer about how inter-AI culture and AI-to-AI interactions relate to cultural disempowerment]",
+                "charts": [
+                  {
+                    "title": "% of generated content deemed \"unintelligible\" or \"alien\" by humans",
+                    "explainer": "[Add explainer about how this metric relates to Gradual Disempowerment]",
+                    "placeholder": true,
+                    "modalId": "alien-ai-content"
+                  },
+                  {
+                    "title": "% of AI training data produced by AIs",
+                    "explainer": "[Add explainer about how this metric relates to Gradual Disempowerment]",
+                    "placeholder": true,
+                    "modalId": "ai-training-data"
+                  }
+                ]
+              }
+            ]
+          }
+        };
+
+        class ContentRenderer {
+            constructor() {
+                this.newsData = [];
+                this.chartsData = {};
+            }
+
+            async init() {
+                try {
+                    await this.loadData();
+                    this.renderNews();
+                    this.renderCharts();
+                } catch (error) {
+                    console.error('Error initializing content:', error);
+                }
+            }
+
+            async loadData() {
+                // Now directly using the embedded variables
+                this.newsData = NEWS_DATA;
+                this.chartsData = CHARTS_DATA;
+            }
+
+            renderNews() {
+                const newsContainer = document.querySelector('.news-container');
+                if (!newsContainer) return;
+
+                newsContainer.innerHTML = this.newsData.map(item => this.createNewsCard(item)).join('');
+            }
+
+            createNewsCard(item) {
+                return `
+                    <div class="news-card">
+                        <a href="${item.url}" target="_blank" rel="noopener noreferrer" style="text-decoration: none;">
+                            <div class="news-image" style="background: ${item.imageGradient}; color: ${item.imageColor}; font-weight: 600; text-align: center; padding: 20px;">
+                                ${item.imageLabel}
+                            </div>
+                        </a>
+                        <div class="news-content">
+                            <h3 class="news-header">${item.title}</h3>
+                            <div class="news-date">${item.date}</div>
+                            <p class="news-summary">${item.summary}</p>
+                            <a href="${item.url}" target="_blank" rel="noopener noreferrer" class="news-link">Read more →</a>
+                        </div>
+                    </div>
+                `;
+            }
+
+            renderCharts() {
+                this.renderOverviewTab();
+                this.renderEconomicTab();
+                this.renderGovernmentalTab();
+                this.renderCulturalTab();
+            }
+
+            renderOverviewTab() {
+                const overviewData = this.chartsData.overview;
+                if (!overviewData) return;
+
+                const heroContainer = document.querySelector('.hero-chart .chart-container');
+                if (heroContainer && overviewData.hero) {
+                    heroContainer.innerHTML = this.createChartHTML(overviewData.hero);
+                }
+
+                const overviewTab = document.getElementById('overview');
+                if (!overviewTab) return;
+
+                const existingSections = overviewTab.querySelectorAll('.section');
+                existingSections.forEach(section => section.remove());
+
+                overviewData.sections.forEach(section => {
+                    const sectionHTML = this.createSectionHTML(section);
+                    overviewTab.insertAdjacentHTML('beforeend', sectionHTML);
+                });
+            }
+
+            renderEconomicTab() {
+                const economicData = this.chartsData.economic;
+                if (!economicData) return;
+
+                const economicTab = document.getElementById('economic');
+                if (!economicTab) return;
+
+                const tabExplainer = economicTab.querySelector('.tab-explainer p');
+                if (tabExplainer && economicData.tabExplainer) {
+                    tabExplainer.textContent = economicData.tabExplainer;
+                }
+
+                const existingSections = economicTab.querySelectorAll('.section');
+                existingSections.forEach(section => section.remove());
+
+                economicData.sections.forEach(section => {
+                    const sectionHTML = this.createSectionHTML(section);
+                    economicTab.insertAdjacentHTML('beforeend', sectionHTML);
+                });
+            }
+
+            renderGovernmentalTab() {
+                const governmentalData = this.chartsData.governmental;
+                if (!governmentalData) return;
+
+                const governmentalTab = document.getElementById('governmental');
+                if (!governmentalTab) return;
+
+                const tabExplainer = governmentalTab.querySelector('.tab-explainer p');
+                if (tabExplainer && governmentalData.tabExplainer) {
+                    tabExplainer.textContent = governmentalData.tabExplainer;
+                }
+
+                const existingSections = governmentalTab.querySelectorAll('.section');
+                existingSections.forEach(section => section.remove());
+
+                governmentalData.sections.forEach(section => {
+                    const sectionHTML = this.createSectionHTML(section);
+                    governmentalTab.insertAdjacentHTML('beforeend', sectionHTML);
+                });
+            }
+
+            renderCulturalTab() {
+                const culturalData = this.chartsData.cultural;
+                if (!culturalData) return;
+
+                const culturalTab = document.getElementById('cultural');
+                if (!culturalTab) return;
+
+                const tabExplainer = culturalTab.querySelector('.tab-explainer p');
+                if (tabExplainer && culturalData.tabExplainer) {
+                    tabExplainer.textContent = culturalData.tabExplainer;
+                }
+
+                const existingSections = culturalTab.querySelectorAll('.section');
+                existingSections.forEach(section => section.remove());
+
+                culturalData.sections.forEach(section => {
+                    const sectionHTML = this.createSectionHTML(section);
+                    culturalTab.insertAdjacentHTML('beforeend', sectionHTML);
+                });
+            }
+
+            createSectionHTML(section) {
+                const chartContainers = section.charts.map(chart => {
+                    const containerClass = chart.fullWidth ? 'full-width-chart' : 'chart-container';
+                    return `
+                        <div class="${containerClass}">
+                            ${this.createChartHTML(chart)}
+                        </div>
+                    `;
+                }).join('');
+
+                const gridClass = section.charts.some(c => c.fullWidth) ? '' : 'chart-grid';
+
+                return `
+                    <div class="section">
+                        <h2 class="section-title">${section.title}</h2>
+                        <div class="section-explainer">
+                            <p>${section.explainer}</p>
+                        </div>
+                        <div class="${gridClass}">
+                            ${chartContainers}
+                        </div>
+                    </div>
+                `;
+            }
+
+            createChartHTML(chart) {
+                // Use modal icon if modalId is provided, otherwise show a simple info icon
+                const infoIcon = chart.modalId
+                    ? `<span class="info-icon" onclick="openInfoModal('${chart.modalId}')" style="cursor: pointer;">i</span>`
+                    : `<span class="info-icon" title="Data source and limitations info coming soon">i</span>`;
+
+                let chartContent;
+                if (chart.placeholder) {
+                    chartContent = '<div class="chart-placeholder">Graph coming soon</div>';
+                } else if (chart.iframe) {
+                    const height = chart.iframeHeight || '400px';
+                    const width = chart.iframeWidth || '100%';
+                    const style = `${width ? `width: ${width};` : ''} ${height ? `height: ${height};` : ''} ${!height && !width ? '' : 'border: none;'}`.trim();
+
+                    chartContent = `<iframe class="chart-iframe" src="${chart.iframe}" ${style ? `style="${style}"` : ''}></iframe>`;
+                } else {
+                    chartContent = '<div class="chart-placeholder">No data available</div>';
+                }
+
+                return `
+                    <div class="chart-header">
+                        <h3 class="chart-title">
+                            ${chart.title}
+                            &nbsp;${infoIcon}
+                        </h3>
+                        <div class="chart-explainer">${chart.explainer}</div>
+                    </div>
+                    ${chartContent}
+                `;
+            }
+        }
+
+        // Tab switching function
         function openTab(evt, tabName) {
-            // Hide all tab contents
-            var tabContents = document.getElementsByClassName("tab-content");
-            for (var i = 0; i < tabContents.length; i++) {
+            const tabContents = document.getElementsByClassName("tab-content");
+            for (let i = 0; i < tabContents.length; i++) {
                 tabContents[i].classList.remove("active");
             }
 
-            // Remove active class from all tab buttons
-            var tabButtons = document.getElementsByClassName("tab-button");
-            for (var i = 0; i < tabButtons.length; i++) {
+            const tabButtons = document.getElementsByClassName("tab-button");
+            for (let i = 0; i < tabButtons.length; i++) {
                 tabButtons[i].classList.remove("active");
             }
 
-            // Show the selected tab content and mark button as active
             document.getElementById(tabName).classList.add("active");
-            evt.currentTarget.classList.add("active");
+            if (evt) evt.currentTarget.classList.add("active");
         }
+
+        // Initialize the app when DOM is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            const renderer = new ContentRenderer();
+            renderer.init();
+        });
+
+        // Modal functions
+        function openInfoModal(dataId) {
+            var modalData = getModalData(dataId);
+            if (!modalData) return;
+
+            document.getElementById('modalTitle').textContent = modalData.title || 'Data Information';
+            document.getElementById('modalBody').innerHTML = buildModalContent(modalData);
+            document.getElementById('infoModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeInfoModal() {
+            document.getElementById('infoModal').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        function closeModalOnOverlay(event) {
+            if (event.target === document.getElementById('infoModal')) {
+                closeInfoModal();
+            }
+        }
+
+        function toggleCollapsible(element) {
+            var section = element.parentElement;
+            section.classList.toggle('open');
+        }
+
+        function buildModalContent(data) {
+            var html = '';
+
+            // Metadata grid
+            html += '<div class="metadata-grid">';
+            html += '<div class="metadata-item"><span class="metadata-label">Source</span><span class="metadata-value">' + (data.source || '-') + '</span></div>';
+            html += '<div class="metadata-item"><span class="metadata-label">Last Updated</span><span class="metadata-value">' + (data.lastUpdated || '-') + '</span></div>';
+            html += '<div class="metadata-item"><span class="metadata-label">Next Expected Update</span><span class="metadata-value">' + (data.nextUpdate || '-') + '</span></div>';
+            html += '<div class="metadata-item"><span class="metadata-label">Date Range</span><span class="metadata-value">' + (data.dateRange || '-') + '</span></div>';
+            html += '<div class="metadata-item"><span class="metadata-label">Unit</span><span class="metadata-value">' + (data.unit || '-') + '</span></div>';
+            html += '</div>';
+
+            // What you should know section
+            html += '<div class="collapsible-section">';
+            html += '<div class="collapsible-header" onclick="toggleCollapsible(this)">';
+            html += '<h4 class="collapsible-title">What you should know about this data</h4>';
+            html += '<span class="collapsible-arrow">&#9660;</span>';
+            html += '</div>';
+            html += '<div class="collapsible-content">';
+            if (data.description) {
+                html += '<h4>Description</h4><p>' + data.description + '</p>';
+            }
+            if (data.interpretation) {
+                html += '<h4>How to interpret the data</h4><p>' + data.interpretation + '</p>';
+            }
+            if (data.limitations) {
+                html += '<h4>Assumptions and Limitations</h4><p>' + data.limitations + '</p>';
+            }
+            html += '</div></div>';
+
+            // Sources section
+            if (data.sources && data.sources.length > 0) {
+                html += '<div class="collapsible-section">';
+                html += '<div class="collapsible-header" onclick="toggleCollapsible(this)">';
+                html += '<h4 class="collapsible-title">The data of this indicator is based on the following sources</h4>';
+                html += '<span class="collapsible-arrow">&#9660;</span>';
+                html += '</div>';
+                html += '<div class="collapsible-content">';
+                data.sources.forEach(function(src, index) {
+                    if (index > 0) html += '<hr style="margin: 15px 0; border: none; border-top: 1px solid #eee;">';
+                    html += '<table class="source-table">';
+                    if (src.name) html += '<tr><td>Name</td><td><strong>' + src.name + '</strong></td></tr>';
+                    if (src.description) html += '<tr><td>Description</td><td>' + src.description + '</td></tr>';
+                    if (src.retrievedFrom) html += '<tr><td>Retrieved From</td><td><a href="' + src.retrievedFrom + '" target="_blank" rel="noopener noreferrer">' + src.retrievedFrom + '</a></td></tr>';
+                    if (src.retrievedOn) html += '<tr><td>Retrieved On</td><td>' + src.retrievedOn + '</td></tr>';
+                    if (src.citation) html += '<tr><td>Citation</td><td><div class="source-citation">' + src.citation + '</div></td></tr>';
+                    html += '</table>';
+                });
+                html += '</div></div>';
+            }
+
+            // Processing section
+            if (data.processing) {
+                html += '<div class="collapsible-section">';
+                html += '<div class="collapsible-header" onclick="toggleCollapsible(this)">';
+                html += '<h4 class="collapsible-title">How we processed the data</h4>';
+                html += '<span class="collapsible-arrow">&#9660;</span>';
+                html += '</div>';
+                html += '<div class="collapsible-content">';
+                html += '<p>' + data.processing + '</p>';
+                html += '</div></div>';
+            }
+
+            return html;
+        }
+
+        // Data definitions for each chart
+        function getModalData(dataId) {
+            var modalDataMap = {
+                'personal-consumption': {
+                    title: 'Personal consumption expenditures as % of GDP',
+                    source: 'WorldBank, Federal Reserve Bank of St. Louis (FRED)',
+                    lastUpdated: 'Sep 25, 2025',
+                    nextUpdate: 'Nov 26, 2025',
+                    dateRange: '1960-2024',
+                    unit: 'Percent of GDP',
+                    description: 'Personal consumption expenditure measures household and nonprofit spending on goods and services for the direct satisfaction of human needs or wants. This includes everything from food and housing to healthcare and entertainment. The indicator is expressed as a percentage of Gross Domestic Product (GDP)—the total value of goods and services produced in an economy during a given period.<br><br>When this share is high, markets are primarily oriented toward satisfying what individual humans want to buy. When it falls, a larger share of economic activity flows through other channels—business investment, government, or exports—where the link to individual human preferences is more indirect.',
+                    interpretation: 'This metric tracks how much of economic output flows directly to household spending decisions. A higher share means markets are more directly responsive to what humans choose to buy.<br><br>This data shows regular fluctuation and is influenced by economic factors other than AI (see Limitations). Thus it is best to ignore small fluctuations in the data and interpret this data alongside our other metrics.',
+                    limitations: '<ul><li>Household spending decisions are made by humans (or by AI acting as faithful agents for humans). If purchases made by future autonomous AI systems are classified as private consumption, this metric loses meaning</li><li>This metric is influenced by many things other than AI, like noise from recession-boom-cycles and the general economic structure (eg, how service-oriented a country is or how much spending is done by the government)</li><li>Other components of GDP, like investment, government, and exports, ultimately also serve human purposes</li><li>Notably, ~10% of US PCE is imputed rent for owner-occupied housing - not actual transactions. Additionally, ~3% of US PCE are not household consumption, but churches, charities or unions</li><li>This metric does not track whether AI assistants make purchasing decisions on behalf of humans</li></ul>',
+                    sources: [{
+                        name: 'World Bank Group - Households and NPISHs final consumption expenditure (% of GDP)',
+                        description: 'Annual measure of household and nonprofit spending as a share of gross domestic product, covering most countries globally. Data is compiled from national statistical offices, central banks, and OECD submissions, supplemented by World Bank staff estimates where official data is unavailable. The "World" aggregate is a GDP-weighted average, meaning large economies (US, China, EU) dominate the global figure. Many countries calculate consumption as a residual (GDP minus government, investment, and net exports), so measurement errors from other components accumulate here. Coverage expands over time—earlier years include fewer countries, which partly explains historical trends.',
+                        retrievedFrom: 'https://data.worldbank.org/indicator/NE.CON.PRVT.ZS',
+                        retrievedOn: '26.11.2025',
+                        citation: 'Households and NPISHs final consumption expenditure (% of GDP). World Bank World Development Indicators (2025)'
+                    }, {
+                        name: 'U.S. Bureau of Economic Analysis via FRED – Shares of gross domestic product: Personal consumption expenditures',
+                        description: 'Quarterly measure of US personal consumption expenditure as a share of GDP, published by the Bureau of Economic Analysis and distributed through the Federal Reserve Bank of St. Louis (FRED). Data is derived from retail sales surveys, Census Bureau surveys, and administrative records. Each quarterly estimate undergoes three revisions (advance, second, third), and annual updates can revise several years of historical data. The series is not seasonally adjusted. Includes imputed values—most notably owner-occupied housing rent (~10% of PCE), which estimates what homeowners would pay to rent their own homes. Nonprofits (churches, charities, unions) account for approximately 3% of the total.',
+                        retrievedFrom: 'https://fred.stlouisfed.org/series/DPCERE1Q156NBEA',
+                        retrievedOn: '26.11.2025',
+                        citation: 'Shares of gross domestic product: Personal consumption expenditures [DPCERE1Q156NBEA]. U.S. Bureau of Economic Analysis, retrieved from FRED, Federal Reserve Bank of St. Louis (2025)'
+                    }],
+                    processing: 'We cut off the FRED data from 1947-1960 to match the start of the data from the World Bank.'
+                },
+                // Overview tab placeholders
+                'ai-empowerment': {
+                    title: 'AI Empowerment over Time',
+                    source: '[Add source]',
+                    lastUpdated: '-',
+                    nextUpdate: '-',
+                    dateRange: '2010-2035',
+                    unit: 'Index',
+                    description: '[Add description]',
+                    interpretation: '[Add interpretation]',
+                    limitations: '[Add limitations]'
+                },
+                'world-map': {
+                    title: 'World Map View over time',
+                    source: '[Add source]',
+                    lastUpdated: '-',
+                    nextUpdate: '-',
+                    dateRange: '-',
+                    unit: 'Index',
+                    description: '[Add description]',
+                    interpretation: '[Add interpretation]',
+                    limitations: '[Add limitations]'
+                },
+                'country-trends': {
+                    title: 'Country Trends',
+                    source: '[Add source]',
+                    lastUpdated: '-',
+                    nextUpdate: '-',
+                    dateRange: '-',
+                    unit: 'Index',
+                    description: '[Add description]',
+                    interpretation: '[Add interpretation]',
+                    limitations: '[Add limitations]'
+                },
+                'economic-index': {
+                    title: 'Economic Disempowerment Index',
+                    source: '[Add source]',
+                    lastUpdated: '-',
+                    nextUpdate: '-',
+                    dateRange: '-',
+                    unit: 'Index',
+                    description: '[Add description]',
+                    interpretation: '[Add interpretation]',
+                    limitations: '[Add limitations]'
+                },
+                'governmental-index': {
+                    title: 'Governmental Disempowerment Index',
+                    source: '[Add source]',
+                    lastUpdated: '-',
+                    nextUpdate: '-',
+                    dateRange: '-',
+                    unit: 'Index',
+                    description: '[Add description]',
+                    interpretation: '[Add interpretation]',
+                    limitations: '[Add limitations]'
+                },
+                'cultural-index': {
+                    title: 'Cultural Disempowerment Index',
+                    source: '[Add source]',
+                    lastUpdated: '-',
+                    nextUpdate: '-',
+                    dateRange: '-',
+                    unit: 'Index',
+                    description: '[Add description]',
+                    interpretation: '[Add interpretation]',
+                    limitations: '[Add limitations]'
+                },
+                // Economic tab placeholders
+                'labor-share-gdp': {
+                    title: 'Labor share of GDP in the US',
+                    source: 'Federal Reserve Economic Data (FRED)',
+                    lastUpdated: '-',
+                    nextUpdate: '-',
+                    dateRange: '-',
+                    unit: '% of GDP',
+                    description: '[Add description]',
+                    interpretation: 'As human labor becomes a smaller part of the economy due to AI automation, people will lose power over economic decisions and outputs.',
+                    limitations: '[Add limitations]'
+                },
+                'unemployment-rate': {
+                    title: 'Total % of unemployment',
+                    source: 'World Bank',
+                    lastUpdated: '-',
+                    nextUpdate: '-',
+                    dateRange: '-',
+                    unit: 'Percent',
+                    description: '[Add description]',
+                    interpretation: '[Add interpretation]',
+                    limitations: '[Add limitations]'
+                },
+                'wage-productivity': {
+                    title: 'Median wage growth vs. productivity growth',
+                    source: 'OECD',
+                    lastUpdated: '-',
+                    nextUpdate: '-',
+                    dateRange: '-',
+                    unit: 'Index',
+                    description: '[Add description]',
+                    interpretation: '[Add interpretation]',
+                    limitations: '[Add limitations]'
+                },
+                'ai-layoffs': {
+                    title: '# of AI-driven layoffs',
+                    source: '[Add source]',
+                    lastUpdated: '-',
+                    nextUpdate: '-',
+                    dateRange: '-',
+                    unit: 'Count',
+                    description: '[Add description]',
+                    interpretation: '[Add interpretation]',
+                    limitations: '[Add limitations]'
+                },
+                'companies-using-ai': {
+                    title: 'Share of Companies Using Artificial Intelligence',
+                    source: 'McKinsey Global Survey on AI',
+                    lastUpdated: '-',
+                    nextUpdate: '-',
+                    dateRange: '-',
+                    unit: 'Percent',
+                    description: 'Shows the percentage of organizations reporting having adopted AI.',
+                    interpretation: 'The global trend shows rapid acceleration in 2024.',
+                    limitations: 'Obtained via Our World in Data. Survey-based data may have sampling biases.'
+                },
+                'ai-business-functions': {
+                    title: 'Survey on number of business functions where AI is used',
+                    source: 'McKinsey',
+                    lastUpdated: '-',
+                    nextUpdate: '-',
+                    dateRange: '-',
+                    unit: 'Count',
+                    description: '[Add description]',
+                    interpretation: '[Add interpretation]',
+                    limitations: '[Add limitations]'
+                },
+                'ai-business-decisions': {
+                    title: 'Fraction of business decisions/spending made by AIs',
+                    source: '[Add source]',
+                    lastUpdated: '-',
+                    nextUpdate: '-',
+                    dateRange: '-',
+                    unit: 'Percent',
+                    description: '[Add description]',
+                    interpretation: '[Add interpretation]',
+                    limitations: '[Add limitations]'
+                },
+                'ai-market-cap': {
+                    title: 'AI company market cap as % of S&P 500',
+                    source: '[Add source]',
+                    lastUpdated: '-',
+                    nextUpdate: '-',
+                    dateRange: '-',
+                    unit: 'Percent',
+                    description: '[Add description]',
+                    interpretation: '[Add interpretation]',
+                    limitations: '[Add limitations]'
+                },
+                'ai-market-growth': {
+                    title: '% of market growth caused by AI companies',
+                    source: '[Add source]',
+                    lastUpdated: '-',
+                    nextUpdate: '-',
+                    dateRange: '-',
+                    unit: 'Percent',
+                    description: '[Add description]',
+                    interpretation: '[Add interpretation]',
+                    limitations: '[Add limitations]'
+                },
+                'ai-investment': {
+                    title: 'Investment in AI companies/startups',
+                    source: 'State of AI Report',
+                    lastUpdated: '-',
+                    nextUpdate: '-',
+                    dateRange: '-',
+                    unit: 'USD',
+                    description: '[Add description]',
+                    interpretation: '[Add interpretation]',
+                    limitations: '[Add limitations]'
+                },
+                'ai-energy-usage': {
+                    title: 'Datacenter / AI energy usage as % of national/industrial energy',
+                    source: '[Add source]',
+                    lastUpdated: '-',
+                    nextUpdate: '-',
+                    dateRange: '-',
+                    unit: 'Percent',
+                    description: '[Add description]',
+                    interpretation: '[Add interpretation]',
+                    limitations: '[Add limitations]'
+                },
+                'ai-industry-growth': {
+                    title: 'Growth of AI-heavy industries vs AI-light industries',
+                    source: '[Add source]',
+                    lastUpdated: '-',
+                    nextUpdate: '-',
+                    dateRange: '-',
+                    unit: 'Percent',
+                    description: '[Add description]',
+                    interpretation: '[Add interpretation]',
+                    limitations: '[Add limitations]'
+                },
+                'output-per-employee': {
+                    title: 'Output per employee - AI-intensive industries vs others',
+                    source: 'EuroStat',
+                    lastUpdated: '-',
+                    nextUpdate: '-',
+                    dateRange: '-',
+                    unit: 'Index',
+                    description: '[Add description]',
+                    interpretation: '[Add interpretation]',
+                    limitations: '[Add limitations]'
+                },
+                // Governmental tab placeholders
+                'govt-tax-revenue': {
+                    title: '% of government revenue from personal income taxes vs. corporate/AI-sector taxes',
+                    source: '[Add source]',
+                    lastUpdated: '-',
+                    nextUpdate: '-',
+                    dateRange: '-',
+                    unit: 'Percent',
+                    description: '[Add description]',
+                    interpretation: '[Add interpretation]',
+                    limitations: '[Add limitations]'
+                },
+                'ai-sector-income': {
+                    title: 'Share of national income from AI-heavy sectors',
+                    source: '[Add source]',
+                    lastUpdated: '-',
+                    nextUpdate: '-',
+                    dateRange: '-',
+                    unit: 'Percent',
+                    description: '[Add description]',
+                    interpretation: '[Add interpretation]',
+                    limitations: '[Add limitations]'
+                },
+                'ai-surveillance': {
+                    title: 'Use of AI for surveillance purposes',
+                    source: 'AI Global Surveillance Index',
+                    lastUpdated: '-',
+                    nextUpdate: '-',
+                    dateRange: '-',
+                    unit: 'Index',
+                    description: '[Add description]',
+                    interpretation: '[Add interpretation]',
+                    limitations: '[Add limitations]'
+                },
+                'govt-ai-spending': {
+                    title: 'Government spending on procurement to AI Companies',
+                    source: 'AI Index Report',
+                    lastUpdated: '-',
+                    nextUpdate: '-',
+                    dateRange: '-',
+                    unit: 'USD',
+                    description: 'Government spending on AI reflects how governments are increasingly relying on AI systems for public services and decision-making.',
+                    interpretation: '[Add interpretation]',
+                    limitations: '[Add limitations]'
+                },
+                'legislation-complexity': {
+                    title: 'Length/Complexity of legislation',
+                    source: '[Add source]',
+                    lastUpdated: '-',
+                    nextUpdate: '-',
+                    dateRange: '-',
+                    unit: 'Index',
+                    description: '[Add description]',
+                    interpretation: '[Add interpretation]',
+                    limitations: '[Add limitations]'
+                },
+                'democracy-index-owid': {
+                    title: 'Electoral Democracy Index worldwide',
+                    source: 'Varieties of Democracy (V-Dem) via Our World in Data',
+                    lastUpdated: 'March 17, 2025',
+                    nextUpdate: 'March 2026',
+                    dateRange: '1789-2024',
+                    unit: 'Index (0-1 scale)',
+                    description: 'The Electoral Democracy Index is the central estimate of the extent to which political leaders are elected under comprehensive suffrage in free and fair elections, and freedoms of association and expression are guaranteed.<br><br>The electoral principle of democracy seeks to embody the core value of making rulers responsive to citizens, achieved through electoral competition for the electorate\'s approval under circumstances when suffrage is extensive; political and civil society organizations can operate freely; elections are clean and not marred by fraud or systematic irregularities; and elections affect the composition of the chief executive of the country. In between elections, there is freedom of expression and an independent media capable of presenting alternative views on matters of political relevance.<br><br>The index ranges from 0 (low) to 1 (high), with higher values indicating a more democratic political system.',
+                    interpretation: '<ul><li>This index is useful if you are interested in big and small differences in democracy, want scores for almost all countries, and prefer a narrow understanding of democracy focused on electoral political institutions: broad voting rights and free, fair, and meaningful elections</li><li>The index is made up of five sub-indices: elected officials, free and fair elections, freedom of expression, freedom of association, and the share of adult citizens who have the right to vote</li><li>The "World" line represents a population-weighted average, which better reflects the average person\'s experience but means changes in large countries (China, India, US) dominate the global trend</li><li>A declining global democracy index could indicate increasing vulnerability to AI-driven surveillance, manipulation, or authoritarian governance</li></ul>',
+                    limitations: '<ul><li>The index takes a narrow view of democracy by focusing on electoral political institutions—for data that focuses on big differences in political systems or has a broad understanding of democracy, other sources may be more useful</li><li>The index is based mainly on assessments by V-Dem\'s approximately 3,500 country experts, which may contain subjective elements, supplemented by factual information coded by its own researchers</li><li>V-Dem covers many more countries since 1900, which affects regional averages—we filter data to start from 1900 for cleaner visualization</li><li>The connection between democracy levels and AI governance is indirect—high democracy scores don\'t guarantee good AI policy</li></ul>',
+                    sources: [{
+                        name: 'V-Dem – Democracy report',
+                        description: 'The Varieties of Democracy (V-Dem) project publishes data and research on democracy and human rights. It acknowledges that democracy can be characterized differently and measures electoral, liberal, participatory, deliberative, and egalitarian characterizations of democracy. The project relies on evaluations by around 3,500 country experts and supplementary work by its researchers to assess political institutions and the protection of rights. The project is managed by the V-Dem Institute, based at the University of Gothenburg in Sweden. This snapshot contains all 531 V-Dem indicators and 245 indices + 60 other indicators from other data sources.',
+                        retrievedFrom: 'https://v-dem.net/data/the-v-dem-dataset/',
+                        retrievedOn: 'March 17, 2025',
+                        citation: 'Coppedge, Michael, John Gerring, Carl Henrik Knutsen, Staffan I. Lindberg, Jan Teorell, David Altman, Fabio Angiolillo, Michael Bernhard, Agnes Cornell, M. Steven Fish, Linnea Fox, Lisa Gastaldi, Haakon Gjerløw, Adam Glynn, Ana Good God, Sandra Grahn, Allen Hicken, Katrin Kinzelbach, Joshua Krusell, Kyle L. Marquardt, Kelly McMann, Valeriya Mechkova, Juraj Medzihorsky, Natalia Natsika, Anja Neundorf, Pamela Paxton, Daniel Pemstein, Johannes von Römer, Brigitte Seim, Rachel Sigman, Svend-Erik Skaaning, Jeffrey Staton, Aksel Sundström, Marcus Tannenberg, Eitan Tzelgov, Yi-ting Wang, Felix Wiebrecht, Tore Wig, Steven Wilson and Daniel Ziblatt. 2025. "V-Dem [Country-Year/Country-Date] Dataset v15" Varieties of Democracy (V-Dem) Project. https://doi.org/10.23696/vdemds25'
+                    }],
+                    processing: 'Data filtered to show years from 1900 onwards for cleaner visualization. The World aggregate is a population-weighted average estimated by Our World in Data using UN WPP 2024 population data—only estimated when 70% of people in a region have data for the given year. OWID also expands time coverage by using historical entity data for non-sovereign territories (e.g., using Pakistan\'s data for Bangladesh from 1947-1970).'
+                },
+                'voter-turnout': {
+                    title: 'Voter Turnout: % eligible citizens voting in national elections',
+                    source: '[Add source]',
+                    lastUpdated: '-',
+                    nextUpdate: '-',
+                    dateRange: '-',
+                    unit: 'Percent',
+                    description: '[Add description]',
+                    interpretation: '[Add interpretation]',
+                    limitations: '[Add limitations]'
+                },
+                'social-spending': {
+                    title: 'Amount of spending on education/healthcare/…',
+                    source: '[Add source]',
+                    lastUpdated: '-',
+                    nextUpdate: '-',
+                    dateRange: '-',
+                    unit: 'USD',
+                    description: '[Add description]',
+                    interpretation: '[Add interpretation]',
+                    limitations: '[Add limitations]'
+                },
+                'democracy-index': {
+                    title: 'Democracy Index',
+                    source: '[Add source]',
+                    lastUpdated: '-',
+                    nextUpdate: '-',
+                    dateRange: '-',
+                    unit: 'Index',
+                    description: '[Add description]',
+                    interpretation: '[Add interpretation]',
+                    limitations: '[Add limitations]'
+                },
+                // Cultural tab placeholders
+                'ai-reddit-content': {
+                    title: 'Amount of reddit content written by AI',
+                    source: 'Originality.AI',
+                    lastUpdated: '-',
+                    nextUpdate: '-',
+                    dateRange: '-',
+                    unit: 'Percent',
+                    description: '[Add description]',
+                    interpretation: '[Add interpretation]',
+                    limitations: '[Add limitations]'
+                },
+                'chatbot-news': {
+                    title: 'Number of adults who get their news from chatbots',
+                    source: 'Pew Research Center',
+                    lastUpdated: '-',
+                    nextUpdate: '-',
+                    dateRange: '-',
+                    unit: 'Percent',
+                    description: '[Add description]',
+                    interpretation: '[Add interpretation]',
+                    limitations: '[Add limitations]'
+                },
+                'ai-web-traffic': {
+                    title: '% of web traffic done by AIs',
+                    source: 'Seraranking',
+                    lastUpdated: '-',
+                    nextUpdate: '-',
+                    dateRange: '-',
+                    unit: 'Percent',
+                    description: '[Add description]',
+                    interpretation: '[Add interpretation]',
+                    limitations: '[Add limitations]'
+                },
+                'ai-romantic-relationships': {
+                    title: '# of people in romantic relationships with AIs',
+                    source: '[Add source]',
+                    lastUpdated: '-',
+                    nextUpdate: '-',
+                    dateRange: '-',
+                    unit: 'Count',
+                    description: '[Add description]',
+                    interpretation: '[Add interpretation]',
+                    limitations: '[Add limitations]'
+                },
+                'ai-relationships-subreddit': {
+                    title: '# of people subscribed to r/AIRelationships',
+                    source: 'Reddit',
+                    lastUpdated: '-',
+                    nextUpdate: '-',
+                    dateRange: '-',
+                    unit: 'Count',
+                    description: '[Add description]',
+                    interpretation: '[Add interpretation]',
+                    limitations: '[Add limitations]'
+                },
+                'alien-ai-content': {
+                    title: '% of generated content deemed "unintelligible" or "alien" by humans',
+                    source: '[Add source]',
+                    lastUpdated: '-',
+                    nextUpdate: '-',
+                    dateRange: '-',
+                    unit: 'Percent',
+                    description: '[Add description]',
+                    interpretation: '[Add interpretation]',
+                    limitations: '[Add limitations]'
+                },
+                'ai-training-data': {
+                    title: '% of AI training data produced by AIs',
+                    source: '[Add source]',
+                    lastUpdated: '-',
+                    nextUpdate: '-',
+                    dateRange: '-',
+                    unit: 'Percent',
+                    description: '[Add description]',
+                    interpretation: '[Add interpretation]',
+                    limitations: '[Add limitations]'
+                }
+            };
+            return modalDataMap[dataId];
+        }
+
+        // Close modal on Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeInfoModal();
+            }
+        });
+
+
+
     </script>
 </body>
 </html>
+
