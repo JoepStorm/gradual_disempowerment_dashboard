@@ -272,13 +272,43 @@ function getModalData(dataId) {
             limitations: '[Add limitations]'
         },
         'govt-ai-spending': {
-            title: 'Government spending on procurement to AI Companies',
-            source: 'AI Index Report',
+            title: 'Amount of Government Spending on AI',
+            source: 'AI Index',
+            lastUpdated: 'April 2025',
+            nextUpdate: 'April 2026',
+            dateRange: '2013-2023',
+            unit: 'Millions of USD',
+            description: 'This metrics indicate the spending of the US and European countries on AI. This only includes public tenders and contracts, but not grants. In this way, it excludes much R&D spending and instead focuses on AI use by the government. It was gathered for the AI Index 2025 by using NLP techniques to identify public tenders and contracts related to AI.',
+            interpretation: 'If this number goes up, esp if the number of government employees goes down, it might indicate that government functions rely more on AI, thus decreasing human influence.',
+            limitations: 'This metric does not directly measure the extent of AI use and human disempowerment in government bureaucracies. Additionally, some R&D funding goes through contracts, such that this number is only an upper bound of Government spending on AI procurement. Finally, this data should not be used for inter-country comparisons.',
+            sources: [{
+                name: 'AI Index Report 2025',
+                description: 'The AI Index Report is a yearly report by the Stanford Institute for Human-Centered AI (HAI). It gathers and presents data related to AI Research, Economic Impacts, AI Policy, and other topics. To gather data about AI-related government spending the "AI Index leveraged natural language processing (NLP) techniques to analyze public tenders and contracts and to identify AI-related government spending in countries across the world. Examining tenders provides a more direct measure of investment trends and offers insight into how governments allocate resources over time."',
+                retrievedFrom: 'https://drive.google.com/drive/folders/1E6KMtGSklh0PbyFwIQjmO9sY5twhKWnQ',
+                retrievedOn: '4.12.2025',
+                citation: 'Nestor Maslej, Loredana Fattorini, Raymond Perrault, Yolanda Gil, Vanessa Parli, Njenga Kariuki, Emily Capstick, Anka Reuel, Erik Brynjolfsson, John Etchemendy, Katrina Ligett, Terah Lyons, James Manyika, Juan Carlos Niebles, Yoav Shoham, Russell Wald, Toby Walsh, Armin Hamrah, Lapo Santarlasci, Julia Betts Lotufo, Alexandra Rome, Andrew Shi, Sukrut Oak. "The AI Index 2025 Annual Report," AI Index Steering Committee, Institute for Human-Centered AI, Stanford University, Stanford, CA, April 2025. https://doi.org/10.48550/arXiv.2504.07139'
+            }],
+            processing: '-'
+        },
+        'human-dependent-taxes': {
+            title: 'Human-Dependent Taxes',
+            source: '[Add source]',
             lastUpdated: '-',
             nextUpdate: '-',
             dateRange: '-',
-            unit: 'USD',
-            description: 'Government spending on AI reflects how governments are increasingly relying on AI systems for public services and decision-making.',
+            unit: 'Percent of GDP',
+            description: 'This metric shows taxes that directly depend on human activity: Labour taxes (SSC + individual income taxes), Consumption taxes (VAT/sales taxes + excises), and Total human-dependent taxes. These represent government revenue streams tied to human employment, wages, and purchasing behavior.',
+            interpretation: '[Add interpretation]',
+            limitations: '[Add limitations]'
+        },
+        'govt-employees-per-capita': {
+            title: 'Human Employees in Government',
+            source: '[Add source]',
+            lastUpdated: '-',
+            nextUpdate: '-',
+            dateRange: '-',
+            unit: 'Employees per working age population',
+            description: 'Government employees per working age population measures how many people are employed in general government relative to the working age population. This metric helps track whether governments maintain human capacity for governance.',
             interpretation: '[Add interpretation]',
             limitations: '[Add limitations]'
         },
@@ -312,16 +342,30 @@ function getModalData(dataId) {
             }],
             processing: 'Data filtered to show years from 1900 onwards for cleaner visualization. The World aggregate is a population-weighted average estimated by Our World in Data using UN WPP 2024 population data—only estimated when 70% of people in a region have data for the given year. OWID also expands time coverage by using historical entity data for non-sovereign territories (e.g., using Pakistan\'s data for Bangladesh from 1947-1970).'
         },
-        'voter-turnout': {
-            title: 'Voter Turnout: % eligible citizens voting in national elections',
-            source: '[Add source]',
-            lastUpdated: '-',
-            nextUpdate: '-',
-            dateRange: '-',
-            unit: 'Percent',
-            description: '[Add description]',
-            interpretation: '[Add interpretation]',
-            limitations: '[Add limitations]'
+        'political-efficacy': {
+            title: 'Political Efficacy (OECD Average)',
+            source: 'OECD - Government at a Glance',
+            lastUpdated: '2025',
+            nextUpdate: '2027',
+            dateRange: '2014-2023',
+            unit: 'Percent of population',
+            description: 'This metric tracks citizens\' perceptions of their ability to influence government through multiple survey questions. Data from 2014-2018 comes from the European Social Survey (ESS), covering primarily European OECD countries. Data from 2021 onwards comes from the OECD Trust Survey. The questions asked to interviewees were:<br><br><b>Confidence to Participate in Politics:</b> "How confident are you in your own ability to participate in politics?" Share of people answering "quite confident", "very confident", or "completely confident" (ESS) or 6-10 (OECD Trust Survey, 0-10 scale).<br><br><b>Have a Say in Government:</b> "How much would you say the political system in [country] allows people like you to have a say in what the government does?" Share of people answering "some", "a lot", or "a great deal" (ESS, 1-5 scale) or 6-10 (on a 0-10 scale).<br><br><b>Responsiveness of policy to public feedback:</b> "If over half of the people in your country clearly expressed a view against a national policy, how likely do you think it is that it would be changed?" Share of people answering 6-10 on a 0-10 scale (OECD Trust Survey only).<br><br><b>Satisfaction with Democracy:</b> "On the whole, how satisfied are you with the way democracy works in [country]?" Share of people answering 5-10 on a 0-10 scale.',
+            interpretation: 'Declining political efficacy could indicate that citizens feel increasingly disconnected from government decision-making—a key concern for Gradual Disempowerment, where AI-driven governance might reduce the willingness of governments to be responsive to public demands. Low political efficacy is associated with political cynicism, lower voter turnout, and perceptions that the system serves narrow interests rather than the public.<br><br>However, political efficacy is influenced by many factors beyond AI: political polarization, economic conditions, trust scandals, and media environment all play major roles. This metric should be interpreted alongside other government-related indicators.',
+            limitations: '<ul><li><b>Major methodology break in 2021:</b> ESS (pre-2021) and OECD Trust Survey (post-2021) use different question wordings, response scales, and country samples. Direct comparisons across this break are not meaningful.</li><li>Different metrics are available in different years—"have a say" was discontinued after 2021, while "responsiveness" only appears from 2021.</li><li>This measures perceptions of efficacy, not actual responsiveness of government to citizen input.</li><li>OECD averages are unweighted, giving equal influence to small and large countries.</li><li>Wide country variation exists (e.g., Switzerland ~74% vs Italy ~10-15% on "have a say")—aggregate trends may mask divergent national patterns.</li></ul>',
+            sources: [{
+                name: 'OECD Trust Survey',
+                description: 'The OECD Trust Survey is a nationally representative population survey collecting data from approximately 2,000 respondents per country across 22-30 OECD countries. The first wave was conducted November-December 2021, with subsequent waves in 2023. All questions use 0-10 scales, aggregated as: 0-4 = low/unlikely; 5 = neutral; 6-10 = high/likely. For detailed methodology, see https://oe.cd/trust.',
+                retrievedFrom: 'https://www.oecd.org/en/publications/serials/government-at-a-glance_g1g123b5.html',
+                retrievedOn: '30.12.2025',
+                citation: 'OECD (2025), Government at a Glance series, OECD Publishing, Paris. https://www.oecd.org/en/publications/serials/government-at-a-glance_g1g123b5.html'
+            }, {
+                name: 'European Social Survey (ESS)',
+                description: 'The ESS is an academically-driven cross-national survey established in 2001. Every two years, face-to-face interviews are conducted with representative samples (minimum 1,500 per country, 800 for countries under 2 million population). The 2019 and 2021 Government at a Glance reports use ESS data from rounds 7-8 (2014-2018). Response options for "have a say" are on a 1-5 scale ("not at all" to "a great deal"); for confidence to participate, responses range from "not at all confident" to "completely confident."',
+                retrievedFrom: 'https://www.oecd.org/en/publications/serials/government-at-a-glance_g1g123b5.html',
+                retrievedOn: '4.12.2025',
+                citation: 'OECD (2019, 2021), Government at a Glance series, OECD Publishing, Paris.'
+            }],
+            processing: '-'
         },
         'trust-in-government': {
             title: 'Trust in National Government',

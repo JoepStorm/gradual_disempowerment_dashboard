@@ -193,10 +193,12 @@ const CHARTS_DATA = {
         "explainer": "[Add section explainer about how state financing reliance on humans relates to governmental disempowerment]",
         "charts": [
           {
-            "title": "% of total government revenue from personal income taxes vs. corporate or AI-sector taxes",
-            "explainer": "[Add explainer about how this metric relates to Gradual Disempowerment]",
-            "placeholder": true,
-            "modalId": "govt-tax-revenue"
+            "title": "Human-Dependent Taxes",
+            "explainer": "This metric shows taxes that directly depend on human activity: Labour taxes (SSC + individual income taxes), Consumption taxes (VAT/sales taxes + excises), and Total human-dependent taxes. These represent government revenue streams tied to human employment, wages, and purchasing behavior.",
+            "iframe": "generated_html/human_dependent_taxes.html",
+            "iframeHeight": "500px",
+            "iframeWidth": "100%",
+            "modalId": "human-dependent-taxes"
           },
           {
             "title": "Share of national income from AI-heavy sectors",
@@ -217,12 +219,20 @@ const CHARTS_DATA = {
             "modalId": "ai-surveillance"
           },
           {
-            "title": "Amount of Government spending on procurement to AI Companies [AI Index]",
+            "title": "Amount of Government Spending on AI",
             "explainer": "Government spending on AI reflects how governments are increasingly relying on AI systems for public services and decision-making.",
             "iframe": "generated_html/public_investment.html",
             "iframeHeight": "450px",
             "iframeWidth": "100%",
             "modalId": "govt-ai-spending"
+          },
+          {
+            "title": "Human Employees in Government",
+            "explainer": "Government employees per working age population measures how many people are employed in general government relative to the working age population. This metric helps track whether governments maintain human capacity for governance.",
+            "iframe": "generated_html/govt_employees_per_capita.html",
+            "iframeHeight": "450px",
+            "iframeWidth": "100%",
+            "modalId": "govt-employees-per-capita"
           },
           {
             "title": "Length/Complexity of legislation",
@@ -238,15 +248,16 @@ const CHARTS_DATA = {
         "charts": [
           {
             "title": "Democracy Index worldwide [OWID]",
-  "explainer": "The Electoral Democracy Index measures to what extent political leaders are elected under comprehensive voting rights in free and fair elections, and can exercise their political power subject to the rule of law. Declining democracy worldwide could make populations more vulnerable to AI-driven authoritarianism.",
+            "explainer": "The Electoral Democracy Index measures to what extent political leaders are elected under comprehensive voting rights in free and fair elections, and can exercise their political power subject to the rule of law. Declining democracy worldwide could make populations more vulnerable to AI-driven authoritarianism.",
             "iframe": "generated_html/democracy_index.html",
             "modalId": "democracy-index-owid"
           },
           {
-            "title": "Voter Turnout: % eligible citizens voting in national elections",
-            "explainer": "[Add explainer about how this metric relates to Gradual Disempowerment]",
-            "placeholder": true,
-            "modalId": "voter-turnout"
+            "title": "Political Efficacy (OECD Average)",
+            "explainer": "Political efficacy is the citizens' trust in their ability to change the government and belief that they can understand and influence political affairs. Gradual Disempowerment reduces the incentive for governments to respond less to the demands of their citizens.",
+            "iframe": "generated_html/political_efficacy.html",
+            "iframeHeight": "550px",
+            "modalId": "political-efficacy"
           }
         ]
       },
