@@ -1,5 +1,49 @@
 const CHARTS_DATA = {
   "overview": {
+    "keyMetrics": [
+      {
+        "label": "Companies using AI",
+        "value": "78%",
+        "year": "2024",
+        "tab": "economic",
+        "description": "Share of organizations that have adopted AI"
+      },
+      {
+        "label": "AI web traffic",
+        "value": "0.15%",
+        "year": "2025",
+        "tab": "cultural",
+        "description": "Share of internet traffic from AI systems"
+      },
+      {
+        "label": "Human labor share of GDP",
+        "value": "59.7%",
+        "year": "2019",
+        "tab": "economic",
+        "description": "Portion of economic output going to workers"
+      },
+      {
+        "label": "Democracy index",
+        "value": "0.48",
+        "year": "2023",
+        "tab": "governmental",
+        "description": "Global average electoral democracy score"
+      },
+      {
+        "label": "Trust in government",
+        "value": "43%",
+        "year": "2022",
+        "tab": "governmental",
+        "description": "Share of citizens trusting national government"
+      },
+      {
+        "label": "Human-dependent taxes",
+        "value": "69%",
+        "year": "2023",
+        "tab": "governmental",
+        "description": "Tax revenue tied to human activity"
+      }
+    ],
     "hero": {
       "title": "AI Empowerment over Time (2010-2035)",
       "explainer": "This chart aggregates all our disempowerment-related metrics into a single index that shows the overall disempowerment of humans.",
@@ -7,62 +51,62 @@ const CHARTS_DATA = {
       "modalId": "ai-empowerment"
     },
     "sections": [
-      {
-        "title": "Total Disempowerment (aggregated)",
-        "explainer": "[Add section explainer about total disempowerment metrics]",
-        "charts": [
-          {
-            "title": "World Map View over time (fake data)",
-            "explainer": "[Add explainer about how this metric relates to Gradual Disempowerment]",
-            "iframe": "generated_html/world_disempowerment.html",
-            "modalId": "world-map",
-            "fullWidth": true
-          },
-          {
-            "title": "Country Trends (fake data)",
-            "explainer": "[Add explainer about how this metric relates to Gradual Disempowerment]",
-            "iframe": "generated_html/country_lines.html",
-            "modalId": "country-trends",
-            "fullWidth": true
-          }
-        ]
-      },
-      {
-        "title": "Economic Disempowerment (aggregated)",
-        "explainer": "[Add section explainer about economic disempowerment metrics]",
-        "charts": [
-          {
-            "title": "Economic Disempowerment Index",
-            "explainer": "[Add explainer about how this metric relates to Gradual Disempowerment]",
-            "placeholder": true,
-            "modalId": "economic-index"
-          }
-        ]
-      },
-      {
-        "title": "Governmental Disempowerment (aggregated)",
-        "explainer": "[Add section explainer about governmental disempowerment metrics]",
-        "charts": [
-          {
-            "title": "Governmental Disempowerment Index",
-            "explainer": "[Add explainer about how this metric relates to Gradual Disempowerment]",
-            "placeholder": true,
-            "modalId": "governmental-index"
-          }
-        ]
-      },
-      {
-        "title": "Cultural Disempowerment (aggregated)",
-        "explainer": "[Add section explainer about cultural disempowerment metrics]",
-        "charts": [
-          {
-            "title": "Cultural Disempowerment Index",
-            "explainer": "[Add explainer about how this metric relates to Gradual Disempowerment]",
-            "placeholder": true,
-            "modalId": "cultural-index"
-          }
-        ]
-      }
+      // {
+      //   "title": "Total Disempowerment (aggregated)",
+      //   "explainer": "[Add section explainer about total disempowerment metrics]",
+      //   "charts": [
+      //     {
+      //       "title": "World Map View over time (fake data)",
+      //       "explainer": "[Add explainer about how this metric relates to Gradual Disempowerment]",
+      //       "iframe": "generated_html/world_disempowerment.html",
+      //       "modalId": "world-map",
+      //       "fullWidth": true
+      //     },
+      //     {
+      //       "title": "Country Trends (fake data)",
+      //       "explainer": "[Add explainer about how this metric relates to Gradual Disempowerment]",
+      //       "iframe": "generated_html/country_lines.html",
+      //       "modalId": "country-trends",
+      //       "fullWidth": true
+      //     }
+      //   ]
+      // },
+      // {
+      //   "title": "Economic Disempowerment (aggregated)",
+      //   "explainer": "[Add section explainer about economic disempowerment metrics]",
+      //   "charts": [
+      //     {
+      //       "title": "Economic Disempowerment Index",
+      //       "explainer": "[Add explainer about how this metric relates to Gradual Disempowerment]",
+      //       "placeholder": true,
+      //       "modalId": "economic-index"
+      //     }
+      //   ]
+      // },
+      // {
+      //   "title": "Governmental Disempowerment (aggregated)",
+      //   "explainer": "[Add section explainer about governmental disempowerment metrics]",
+      //   "charts": [
+      //     {
+      //       "title": "Governmental Disempowerment Index",
+      //       "explainer": "[Add explainer about how this metric relates to Gradual Disempowerment]",
+      //       "placeholder": true,
+      //       "modalId": "governmental-index"
+      //     }
+      //   ]
+      // },
+      // {
+      //   "title": "Cultural Disempowerment (aggregated)",
+      //   "explainer": "[Add section explainer about cultural disempowerment metrics]",
+      //   "charts": [
+      //     {
+      //       "title": "Cultural Disempowerment Index",
+      //       "explainer": "[Add explainer about how this metric relates to Gradual Disempowerment]",
+      //       "placeholder": true,
+      //       "modalId": "cultural-index"
+      //     }
+      //   ]
+      // }
     ]
   },
   "economic": {
@@ -84,18 +128,18 @@ const CHARTS_DATA = {
             "iframe": "generated_html/unemployment_rate.html",
             "modalId": "unemployment-rate"
           },
-          {
-            "title": "Median wage growth vs. productivity growth [OECD]",
-            "explainer": "[Add explainer about how this metric relates to Gradual Disempowerment]",
-            "placeholder": true,
-            "modalId": "wage-productivity"
-          },
-          {
-            "title": "# of AI-driven layoffs",
-            "explainer": "[Add explainer about how this metric relates to Gradual Disempowerment]",
-            "placeholder": true,
-            "modalId": "ai-layoffs"
-          }
+          // {
+          //   "title": "Median wage growth vs. productivity growth [OECD]",
+          //   "explainer": "[Add explainer about how this metric relates to Gradual Disempowerment]",
+          //   "placeholder": true,
+          //   "modalId": "wage-productivity"
+          // },
+          // {
+          //   "title": "# of AI-driven layoffs",
+          //   "explainer": "[Add explainer about how this metric relates to Gradual Disempowerment]",
+          //   "placeholder": true,
+          //   "modalId": "ai-layoffs"
+          // }
         ]
       },
       {
@@ -124,65 +168,66 @@ const CHARTS_DATA = {
           {
             "title": "Survey on number of business functions where AI is used [McKinsey]",
             "explainer": "[Add explainer about how this metric relates to Gradual Disempowerment]",
-            "placeholder": true,
+            "iframe": "generated_html/ai_business_functions.html",
+            "iframeHeight": "450px",
             "modalId": "ai-business-functions"
           },
-          {
-            "title": "Fraction of business decisions/spending made by AIs",
-            "explainer": "[Add explainer about how this metric relates to Gradual Disempowerment]",
-            "placeholder": true,
-            "modalId": "ai-business-decisions"
-          }
+          // {
+          //   "title": "Fraction of business decisions/spending made by AIs",
+          //   "explainer": "[Add explainer about how this metric relates to Gradual Disempowerment]",
+          //   "placeholder": true,
+          //   "modalId": "ai-business-decisions"
+          // }
         ]
       },
-      {
-        "title": "AI Economy Impact",
-        "explainer": "[Add section explainer about how AI's economic impact relates to gradual disempowerment]",
-        "charts": [
-          {
-            "title": "AI company market cap as % of S&P 500",
-            "explainer": "[Add explainer about how this metric relates to Gradual Disempowerment]",
-            "placeholder": true,
-            "modalId": "ai-market-cap"
-          },
-          {
-            "title": "% of market growth caused by AI companies",
-            "explainer": "[Add explainer about how this metric relates to Gradual Disempowerment]",
-            "placeholder": true,
-            "modalId": "ai-market-growth"
-          },
-          {
-            "title": "Investment in AI companies/startups [State of AI Report]",
-            "explainer": "[Add explainer about how this metric relates to Gradual Disempowerment]",
-            "placeholder": true,
-            "modalId": "ai-investment"
-          },
-          {
-            "title": "Datacenter / AI energy usage as % of national/industrial energy",
-            "explainer": "[Add explainer about how this metric relates to Gradual Disempowerment]",
-            "placeholder": true,
-            "modalId": "ai-energy-usage"
-          }
-        ]
-      },
-      {
-        "title": "Productivity Improvements from AI",
-        "explainer": "[Add section explainer about how AI-driven productivity gains relate to economic disempowerment]",
-        "charts": [
-          {
-            "title": "Growth of AI-heavy industries vs AI-light industries",
-            "explainer": "[Add explainer about how this metric relates to Gradual Disempowerment]",
-            "placeholder": true,
-            "modalId": "ai-industry-growth"
-          },
-          {
-            "title": "Output per employee. Compare AI-intensive industries vs others [EuroStat]",
-            "explainer": "[Add explainer about how this metric relates to Gradual Disempowerment]",
-            "placeholder": true,
-            "modalId": "output-per-employee"
-          }
-        ]
-      }
+      // {
+      //   "title": "AI Economy Impact",
+      //   "explainer": "[Add section explainer about how AI's economic impact relates to gradual disempowerment]",
+      //   "charts": [
+      //     {
+      //       "title": "AI company market cap as % of S&P 500",
+      //       "explainer": "[Add explainer about how this metric relates to Gradual Disempowerment]",
+      //       "placeholder": true,
+      //       "modalId": "ai-market-cap"
+      //     },
+      //     {
+      //       "title": "% of market growth caused by AI companies",
+      //       "explainer": "[Add explainer about how this metric relates to Gradual Disempowerment]",
+      //       "placeholder": true,
+      //       "modalId": "ai-market-growth"
+      //     },
+      //     {
+      //       "title": "Investment in AI companies/startups [State of AI Report]",
+      //       "explainer": "[Add explainer about how this metric relates to Gradual Disempowerment]",
+      //       "placeholder": true,
+      //       "modalId": "ai-investment"
+      //     },
+      //     {
+      //       "title": "Datacenter / AI energy usage as % of national/industrial energy",
+      //       "explainer": "[Add explainer about how this metric relates to Gradual Disempowerment]",
+      //       "placeholder": true,
+      //       "modalId": "ai-energy-usage"
+      //     }
+      //   ]
+      // },
+      // {
+      //   "title": "Productivity Improvements from AI",
+      //   "explainer": "[Add section explainer about how AI-driven productivity gains relate to economic disempowerment]",
+      //   "charts": [
+      //     {
+      //       "title": "Growth of AI-heavy industries vs AI-light industries",
+      //       "explainer": "[Add explainer about how this metric relates to Gradual Disempowerment]",
+      //       "placeholder": true,
+      //       "modalId": "ai-industry-growth"
+      //     },
+      //     {
+      //       "title": "Output per employee. Compare AI-intensive industries vs others [EuroStat]",
+      //       "explainer": "[Add explainer about how this metric relates to Gradual Disempowerment]",
+      //       "placeholder": true,
+      //       "modalId": "output-per-employee"
+      //     }
+      //   ]
+      // }
     ]
   },
   "governmental": {
@@ -200,24 +245,24 @@ const CHARTS_DATA = {
             "iframeWidth": "100%",
             "modalId": "human-dependent-taxes"
           },
-          {
-            "title": "Share of national income from AI-heavy sectors",
-            "explainer": "[Add explainer about how this metric relates to Gradual Disempowerment]",
-            "placeholder": true,
-            "modalId": "ai-sector-income"
-          }
+          // {
+          //   "title": "Share of national income from AI-heavy sectors",
+          //   "explainer": "[Add explainer about how this metric relates to Gradual Disempowerment]",
+          //   "placeholder": true,
+          //   "modalId": "ai-sector-income"
+          // }
         ]
       },
       {
         "title": "Use of AI vs Human Labor in Government",
         "explainer": "[Add section explainer about how AI adoption in government relates to governmental disempowerment]",
         "charts": [
-          {
-            "title": "Use of AI for surveillance purposes [AI Global Surveillance Index]",
-            "explainer": "[Add explainer about how this metric relates to Gradual Disempowerment]",
-            "placeholder": true,
-            "modalId": "ai-surveillance"
-          },
+          // {
+          //   "title": "Use of AI for surveillance purposes [AI Global Surveillance Index]",
+          //   "explainer": "[Add explainer about how this metric relates to Gradual Disempowerment]",
+          //   "placeholder": true,
+          //   "modalId": "ai-surveillance"
+          // },
           {
             "title": "Amount of Government Spending on AI",
             "explainer": "Government spending on AI reflects how governments are increasingly relying on AI systems for public services and decision-making.",
@@ -285,18 +330,18 @@ const CHARTS_DATA = {
   "cultural": {
     "tabExplainer": "[Add cultural tab explainer about how cultural factors contribute to Gradual Disempowerment]",
     "sections": [
-      {
-        "title": "Cultural Production",
-        "explainer": "[Add section explainer about how AI-generated cultural content relates to cultural disempowerment]",
-        "charts": [
-          {
-            "title": "Amount of reddit content written by AI [Originality.AI]",
-            "explainer": "[Add explainer about how this metric relates to Gradual Disempowerment]",
-            "placeholder": true,
-            "modalId": "ai-reddit-content"
-          }
-        ]
-      },
+      // {
+      //   "title": "Cultural Production",
+      //   "explainer": "[Add section explainer about how AI-generated cultural content relates to cultural disempowerment]",
+      //   "charts": [
+      //     {
+      //       "title": "Amount of reddit content written by AI [Originality.AI]",
+      //       "explainer": "[Add explainer about how this metric relates to Gradual Disempowerment]",
+      //       "placeholder": true,
+      //       "modalId": "ai-reddit-content"
+      //     }
+      //   ]
+      // },
       {
         "title": "AI-mediated Consumption",
         "explainer": "[Add section explainer about how AI-mediated content consumption relates to cultural disempowerment]",
@@ -311,47 +356,49 @@ const CHARTS_DATA = {
           {
             "title": "% of web traffic done by AIs [Seraranking]",
             "explainer": "[Add explainer about how this metric relates to Gradual Disempowerment]",
-            "placeholder": true,
-            "modalId": "ai-web-traffic"
+            "iframe": "generated_html/ai_web_traffic_share.html",
+            "iframeHeight": "550px",
+            "modalId": "ai-web-traffic",
+            "fullWidth": false
           }
         ]
       },
-      {
-        "title": "Human-AI relationships",
-        "explainer": "[Add section explainer about how human-AI relationships relate to cultural disempowerment]",
-        "charts": [
-          {
-            "title": "# of people in romantic relationships with AIs",
-            "explainer": "[Add explainer about how this metric relates to Gradual Disempowerment]",
-            "placeholder": true,
-            "modalId": "ai-romantic-relationships"
-          },
-          {
-            "title": "# of people subscribed to r/AIRelationships",
-            "explainer": "[Add explainer about how this metric relates to Gradual Disempowerment]",
-            "placeholder": true,
-            "modalId": "ai-relationships-subreddit"
-          }
-        ]
-      },
-      {
-        "title": "Inter AI Culture",
-        "explainer": "[Add section explainer about how inter-AI culture and AI-to-AI interactions relate to cultural disempowerment]",
-        "charts": [
-          {
-            "title": "% of generated content deemed \"unintelligible\" or \"alien\" by humans",
-            "explainer": "[Add explainer about how this metric relates to Gradual Disempowerment]",
-            "placeholder": true,
-            "modalId": "alien-ai-content"
-          },
-          {
-            "title": "% of AI training data produced by AIs",
-            "explainer": "[Add explainer about how this metric relates to Gradual Disempowerment]",
-            "placeholder": true,
-            "modalId": "ai-training-data"
-          }
-        ]
-      }
+      // {
+      //   "title": "Human-AI relationships",
+      //   "explainer": "[Add section explainer about how human-AI relationships relate to cultural disempowerment]",
+      //   "charts": [
+      //     {
+      //       "title": "# of people in romantic relationships with AIs",
+      //       "explainer": "[Add explainer about how this metric relates to Gradual Disempowerment]",
+      //       "placeholder": true,
+      //       "modalId": "ai-romantic-relationships"
+      //     },
+      //     {
+      //       "title": "# of people subscribed to r/AIRelationships",
+      //       "explainer": "[Add explainer about how this metric relates to Gradual Disempowerment]",
+      //       "placeholder": true,
+      //       "modalId": "ai-relationships-subreddit"
+      //     }
+      //   ]
+      // },
+      // {
+      //   "title": "Inter AI Culture",
+      //   "explainer": "[Add section explainer about how inter-AI culture and AI-to-AI interactions relate to cultural disempowerment]",
+      //   "charts": [
+      //     {
+      //       "title": "% of generated content deemed \"unintelligible\" or \"alien\" by humans",
+      //       "explainer": "[Add explainer about how this metric relates to Gradual Disempowerment]",
+      //       "placeholder": true,
+      //       "modalId": "alien-ai-content"
+      //     },
+      //     {
+      //       "title": "% of AI training data produced by AIs",
+      //       "explainer": "[Add explainer about how this metric relates to Gradual Disempowerment]",
+      //       "placeholder": true,
+      //       "modalId": "ai-training-data"
+      //     }
+      //   ]
+      // }
     ]
   }
   };

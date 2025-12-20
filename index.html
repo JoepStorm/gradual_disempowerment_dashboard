@@ -38,9 +38,10 @@
                     </p>
                 </div>
 
-                <div class="hero-chart">
-                    <div class="chart-container">
-                        <!-- Hero chart will be dynamically rendered -->
+                <div class="hero-metrics">
+                    <h3 class="metrics-title">Key Indicators</h3>
+                    <div class="metrics-grid">
+                        <!-- Metrics will be dynamically rendered -->
                     </div>
                 </div>
             </div>
@@ -161,9 +162,10 @@
                 const overviewData = this.chartsData.overview;
                 if (!overviewData) return;
 
-                const heroContainer = document.querySelector('.hero-chart .chart-container');
-                if (heroContainer && overviewData.hero) {
-                    heroContainer.innerHTML = this.createChartHTML(overviewData.hero);
+                // Render key metrics
+                const metricsGrid = document.querySelector('.metrics-grid');
+                if (metricsGrid && overviewData.keyMetrics) {
+                    metricsGrid.innerHTML = overviewData.keyMetrics.map(metric => this.createMetricCard(metric)).join('');
                 }
 
                 const overviewTab = document.getElementById('overview');
@@ -176,6 +178,17 @@
                     const sectionHTML = this.createSectionHTML(section);
                     overviewTab.insertAdjacentHTML('beforeend', sectionHTML);
                 });
+            }
+
+            createMetricCard(metric) {
+                return `
+                    <a href="#" class="metric-card" onclick="openTab(null, '${metric.tab}'); return false;">
+                        <div class="metric-value">${metric.value}</div>
+                        <div class="metric-label">${metric.label}</div>
+                        <div class="metric-year">${metric.year}</div>
+                        <div class="metric-description">${metric.description}</div>
+                    </a>
+                `;
             }
 
             renderEconomicTab() {
@@ -311,7 +324,19 @@
             }
 
             document.getElementById(tabName).classList.add("active");
-            if (evt) evt.currentTarget.classList.add("active");
+
+            // Activate the correct tab button
+            if (evt) {
+                evt.currentTarget.classList.add("active");
+            } else {
+                // Find and activate the button for this tab
+                for (let i = 0; i < tabButtons.length; i++) {
+                    if (tabButtons[i].getAttribute('onclick').includes(tabName)) {
+                        tabButtons[i].classList.add("active");
+                        break;
+                    }
+                }
+            }
         }
 
         // Initialize the app when DOM is loaded
