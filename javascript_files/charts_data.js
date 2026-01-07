@@ -312,14 +312,14 @@ const CHARTS_DATA = {
         "explainer": "[Add section explainer about how governmental misalignment relates to governmental disempowerment]",
         "charts": [
           {
-            "title": "Satisfaction with Public Services",
-            "explainer": "Share of citizens satisfied with healthcare, education, and judicial systems. Declining satisfaction may indicate government services failing to meet citizen needs and expectations.",
+            "title": "Satisfaction with healthcare, education, and judicial systems.",
+            "explainer": "Share of citizens satisfied with each system. Declining satisfaction may indicate government services failing to meet citizen needs and expectations.",
             "iframe": "generated_html/satisfaction_with_government.html",
             "modalId": "satisfaction-services"
           },
           {
-            "title": "Trust in National Government",
-            "explainer": "Share of citizens expressing confidence/trust in national government. Low trust may indicate a disconnect between government actions and citizen preferences, while methodology changes in 2022 reflect new measurement approaches.",
+            "title": "Share of citizens trusting their National Government",
+            "explainer": "Low trust may indicate a disconnect between government actions and citizen preferences.",
             "iframe": "generated_html/trust_in_government.html",
             "modalId": "trust-in-government"
           }
@@ -347,8 +347,8 @@ const CHARTS_DATA = {
         "explainer": "[Add section explainer about how AI-mediated content consumption relates to cultural disempowerment]",
         "charts": [
           {
-            "title": "Number of adults who get their news from chatbots [Pewresearch]",
-            "explainer": "[Add explainer about how this metric relates to Gradual Disempowerment]",
+            "title": "Share of popoulation who obtain news from chatbots",
+            "explainer": "The sources of media one consumes can play a large role in one's perception. An increased reliance on chatbots for news can give significant power to those chatbots. Over time,  Additionally, more competition for journalists can erode traditional news-sources. These factors increase Gradual Disempowerment.",
             "iframe": "generated_html/world_news_media.html",
             "modalId": "chatbot-news",
             "fullWidth": true

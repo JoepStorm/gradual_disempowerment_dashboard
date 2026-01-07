@@ -460,15 +460,23 @@ function getModalData(dataId) {
             limitations: '[Add limitations]'
         },
         'chatbot-news': {
-            title: 'Number of adults who get their news from chatbots',
-            source: 'Pew Research Center',
-            lastUpdated: '-',
-            nextUpdate: '-',
-            dateRange: '-',
-            unit: 'Percent',
-            description: '[Add description]',
-            interpretation: '[Add interpretation]',
-            limitations: '[Add limitations]'
+            title: 'Share of popoulation who obtain news from chatbots',
+            source: 'Reuters Institute',
+            lastUpdated: 'June 2025',
+            nextUpdate: 'June 20266',
+            dateRange: '2025',
+            unit: 'Percent of population',
+            description: 'The data was obtained from a survey by YouGov in January and February of 2025, commissioned by the Reuters Institute for the Study of Journalism to understand how news is being consumed in a range of countries. Surveys were done online, and are therefore based on people’s self-reported behaviour. For each country, at least 2000 samples were included. As much as possible, samples were assembled using nationally representative quotas for age, gender, religion, and education. Political quotes based on vote choices in the last national election were applied in around a third of the markets, including the United States, Australia, and much of Western Europe.',
+            interpretation: '<ul><li>The sources of media one consumes can play a large role in one\'s perception. An increased reliance on chatbots for news can give significant power to those chatbots. Additionally, more competition for journalists can erode traditional news-sources.</li><li>Chatbots’ responses can be largely steered by the companies that create them, also increasing their power to influence the general opinion. At the same time, chatbots have the potential to give more nuanced views than if one only consumes news from a single source. </li></ul>',
+            limitations: '<ul><li>The full list of assumptions is presented in the full report. Three main assumptions are summarized here.</li><li>Data from India, Kenya, Nigeria and South Africa are representative of English-speakers, and not the national population, because it is not possible to reach other groups in a representative way using an online survey.</li><li>Online samples tend to under-represent the news consumption habits of people who are older and less affluent, meaning online use, such as chatbots, is typically over-represented. In this sense, it is better to think of results as representative of the online population.</li><li>Surveys capture people’s self-reported behaviour, which does not always reflect people’s actual behaviour due to biases and imperfect recall. </li></ul>',
+            sources: [{
+                name: 'Reuters Institute Digital News Report 2025',
+                description: 'The data was obtained from a survey by YouGov, commissioned by the Reuters Institute for the Study of Journalism to understand how news is being consumed in a range of countries. Self-reported news sources through an online questionnaire, conducted from the middle of January to the end of February ',
+                retrievedFrom: 'https://reutersinstitute.politics.ox.ac.uk/sites/default/files/2025-06/Digital_News-Report_2025.pdf',
+                retrievedOn: '15.10.2025',
+                citation: 'Newman, Nic, et al. Digital news report 2025. Reuters Institute for the study of Journalism, 2025.'
+            }],
+            processing: 'No processing was performed.'
         },
         'ai-web-traffic': {
             title: '% of web traffic done by AIs',
